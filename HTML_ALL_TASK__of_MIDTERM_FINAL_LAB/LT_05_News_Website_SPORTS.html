@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Shahriyar Rahman">
+    <meta name="description" content="DailyFlash - Latest sports news and match reports.">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DailyFlash | Sports</title>
+    <style>
+        :root{
+            --bg:#f3f6fb; --card:#ffffff; --muted:#6b7280;
+            --accent:#0b67c2; --accent-2:#064a8a; --shadow: rgba(6,30,60,0.12);
+            --radius:12px;
+        }
+        *{box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#0f1724;background:var(--bg)}
+        header{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:white;padding:26px 20px;position:sticky;top:0;z-index:40;box-shadow:0 6px 20px var(--shadow)}
+        .site-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+        .brand{display:flex;gap:14px;align-items:center}
+        .logo{width:54px;height:54px;border-radius:10px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:700}
+        h1{margin:0;font-size:22px;letter-spacing:0.4px}
+        .tagline{margin:0;font-size:13px;opacity:0.9}
+        nav{margin-left:auto}
+        nav ul{list-style:none;margin:0;padding:0;display:flex;gap:10px;align-items:center}
+        nav a{color:white;padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600;display:inline-block;transition:all .18s ease}
+        nav a:hover{transform:translateY(-2px)}
+        nav a.active{background:rgba(255,255,255,0.15);box-shadow:0 6px 14px rgba(4,18,56,0.12)}
+        main{max-width:1180px;margin:28px auto;padding:0 18px;display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
+        .articles{display:flex;flex-direction:column;gap:22px}
+        article.card{background:var(--card);border-radius:12px;box-shadow:0 10px 30px var(--shadow);overflow:hidden;display:grid;grid-template-columns:180px 1fr;gap:18px;padding:18px;opacity:0;transform:translateY(14px);transition:all .6s cubic-bezier(.2,.9,.2,1)}
+        article.card.visible{opacity:1;transform:none}
+        article.card img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+        .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+        h2.head{margin:0 0 8px 0;font-size:18px;color:#071233}
+        p.lead{margin:0;color:#334155;line-height:1.5}
+        .readmore{display:inline-block;margin-top:12px;color:var(--accent);font-weight:700;text-decoration:none}
+        aside.card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 10px 30px var(--shadow);display:flex;flex-direction:column;gap:12px;position:sticky;top:92px}
+        .toplist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+        .toplist a{color:#0b2340;text-decoration:none;font-weight:600}
+        .trend{background:linear-gradient(90deg, #f1f5f9, #ffffff);padding:12px;border-radius:10px;border:1px solid rgba(6,30,60,0.04);font-weight:700}
+        .adbox{background:linear-gradient(90deg,#eef6ff,#ffffff);padding:12px;border-radius:8px;border:1px dashed rgba(6,30,60,0.06);text-align:center;color:var(--muted)}
+        footer{max-width:1180px;margin:34px auto 64px;padding:22px 18px;background:#071233;color:#e6f2ff;border-radius:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+        .social{display:flex;gap:12px;align-items:center}
+        .social a{color:#e6f2ff;text-decoration:none;font-weight:700}
+        .hr{height:1px;background:linear-gradient(90deg,transparent,rgba(6,30,60,0.06),transparent);margin:10px 0;border-radius:2px}
+        @media(max-width:980px){main{grid-template-columns:1fr} aside.card{position:static;top:auto}}
+        @media(max-width:640px){
+            .site-inner{flex-direction:column;align-items:flex-start}
+            article.card{grid-template-columns:1fr; padding:14px}
+            article.card img{height:200px}
+            nav ul{flex-wrap:wrap;gap:8px}
+        }
+    </style>
+</head>
+<body id="top">
+    <header>
+        <div class="site-inner">
+            <div class="brand">
+                <div class="logo">DF</div>
+                <div>
+                    <h1>DailyFlash</h1>
+                    <div class="tagline">Sports — Scores & Analysis</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="LT_05_News_Website_INDEX.html">Home</a></li>
+                    <li><a href="LT_05_News_Website_WORLD.html">World</a></li>
+                    <li><a href="LT_05_News_Website_SPORTS.html" class="active">Sports</a></li>
+                    <li><a href="#">Tech</a></li>
+                    <li><a href="#">Lifestyle</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="articles" aria-labelledby="sportsnews">
+            <h2 id="sportsnews" style="margin:0 0 6px 4px;font-size:14px;color:var(--muted)">Latest in Sports</h2>
+
+            <article class="card fade-up">
+                <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80" alt="championship action">
+                <div>
+                    <div class="meta"><time datetime="2025-11-16">Nov 16, 2025</time> · Football</div>
+                    <h2 class="head">Dramatic Final Seals National Championship</h2>
+                    <p class="lead">An extra-time winner gave the national team a memorable triumph in front of packed stadiums, while coaches praised the squad's mental strength.</p>
+                    <a class="readmore" href="#">Read More →</a>
+                </div>
+            </article>
+
+            <article class="card fade-up">
+                <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=80" alt="coach speak">
+                <div>
+                    <div class="meta"><time datetime="2025-11-15">Nov 15, 2025</time> · Interviews</div>
+                    <h2 class="head">Coach Reflects on Turning Point of Season</h2>
+                    <p class="lead">In a candid interview, the coach discussed pivotal tactics and the roster changes that helped turn the team's fortunes around mid-season.</p>
+                    <a class="readmore" href="#">Read More →</a>
+                </div>
+            </article>
+
+            <article class="card fade-up">
+                <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80" alt="player training">
+                <div>
+                    <div class="meta"><time datetime="2025-11-14">Nov 14, 2025</time> · Training</div>
+                    <h2 class="head">New Training Regimen Aims to Reduce Injuries</h2>
+                    <p class="lead">A sports science program introduced into preseason workouts promises to lower soft-tissue injuries through focused conditioning and monitoring.</p>
+                    <a class="readmore" href="#">Read More →</a>
+                </div>
+            </article>
+        </section>
+
+        <aside class="aside">
+            <aside class="card" aria-labelledby="tophead">
+                <h3 id="tophead" style="margin:0 0 8px 0">Top Headlines</h3>
+                <ul class="toplist">
+                    <li><a href="#">Late equaliser stuns rivals</a></li>
+                    <li><a href="#">Star player signs new contract</a></li>
+                    <li><a href="#">League announces schedule</a></li>
+                    <li><a href="#">Record attendance at match</a></li>
+                    <li><a href="#">Youth academy celebrates win</a></li>
+                </ul>
+                <div class="hr"></div>
+                <div class="trend">Editor’s Pick: Goal of the Month finalists</div>
+                <div class="adbox">Advertisement: Partner with DailyFlash Sports</div>
+            </aside>
+        </aside>
+    </main>
+
+    <footer>
+        <div>© 2025 DailyFlash — All Rights Reserved.</div>
+        <div class="social">
+            <a href="#">Facebook</a>
+            <a href="#">X</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        const obs3 = new IntersectionObserver((entries)=> {
+            entries.forEach(e=>{
+                if(e.isIntersecting){ e.target.classList.add('visible'); obs3.unobserve(e.target) }
+            })
+        }, {threshold:0.12});
+        document.querySelectorAll('.fade-up').forEach(el=>obs3.observe(el));
+    </script>
+</body>
+</html>

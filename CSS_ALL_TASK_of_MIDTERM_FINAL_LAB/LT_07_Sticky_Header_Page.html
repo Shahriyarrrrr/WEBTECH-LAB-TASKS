@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>TechSphere Blog — Enhanced</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --bg:#f5f7fa;
+  --text:#0f172a;
+  --muted:#64748b;
+  --accent:#2563eb;
+  --card:#ffffff;
+  --glass: rgba(255,255,255,0.8);
+  --shadow: rgba(2,6,23,0.08);
+}
+body.dark{
+  --bg:#071026;
+  --text:#e6eef8;
+  --muted:#94a3b8;
+  --accent:#38bdf8;
+  --card:#0f1724;
+  --glass: rgba(255,255,255,0.03);
+  --shadow: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, "Segoe UI", Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:background 300ms ease,color 300ms ease;
+  -webkit-font-smoothing:antialiased;
+}
+.progress-wrap{
+  position:fixed;
+  left:0;top:0;
+  width:100%;
+  height:6px;
+  z-index:9999;
+  background:linear-gradient(90deg, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+}
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--accent), #7dd3fc);
+  transition:width 120ms linear;
+}
+.header{
+  position:sticky;top:0;z-index:9998;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;padding:18px 28px;background:linear-gradient(90deg,var(--accent), #60a5fa);
+  color:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+.logo{font-weight:800;font-size:20px;letter-spacing:0.4px}
+.header-right{display:flex;align-items:center;gap:12px}
+.search-inline{
+  display:flex;align-items:center;background:rgba(255,255,255,0.12);
+  padding:6px 10px;border-radius:10px;gap:8px;
+}
+.search-inline input{
+  border:0;background:transparent;color:#fff;outline:none;font-size:14px;width:220px;
+}
+.icon-btn{
+  background:rgba(0,0,0,0.12);border-radius:10px;padding:8px 10px;color:#fff;cursor:pointer;border:0;
+}
+.container{
+  max-width:1200px;margin:30px auto;display:grid;grid-template-columns: 1fr 320px;gap:28px;padding:0 20px;
+}
+.main{
+  display:flex;flex-direction:column;gap:20px;
+}
+.articles{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;
+}
+.card{
+  background:var(--card);border-radius:14px;padding:18px;box-shadow:0 10px 30px var(--shadow);
+  transform:translateY(0);transition:transform 300ms ease, box-shadow 300ms ease;
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 18px 40px rgba(2,6,23,0.12)}
+.card .media{height:160px;width:100%;border-radius:10px;overflow:hidden;background:#111}
+.card .media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 700ms ease}
+.card:hover .media img{transform:scale(1.06)}
+.card h3{margin:14px 0 8px;font-size:18px}
+.meta{display:flex;gap:12px;align-items:center;font-size:13px;color:var(--muted)}
+.excerpt{margin-top:12px;color:var(--muted);line-height:1.5}
+.read-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--accent);color:#fff;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600}
+.animated{
+  opacity:0;transform:translateY(20px);transition:opacity 500ms ease,transform 500ms ease;
+}
+.animated.visible{opacity:1;transform:none}
+
+.sidebar{
+  display:flex;flex-direction:column;gap:18px;
+  position:relative;
+}
+.widget{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 8px 24px var(--shadow)}
+.widget h4{margin:0 0 10px;font-size:16px}
+.search-box{display:flex;gap:8px}
+.search-box input{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);outline:none}
+.trending li{list-style:none;padding:10px 6px;border-bottom:1px dashed rgba(0,0,0,0.04);display:flex;gap:10px;align-items:center}
+.trending li:last-child{border-bottom:0}
+.trending img{width:56px;height:42px;object-fit:cover;border-radius:8px}
+.categories{display:flex;flex-wrap:wrap;gap:8px}
+.cat{padding:6px 10px;background:linear-gradient(90deg,#eef2ff,#fff);border-radius:8px;font-size:13px}
+.badge{background:var(--accent);color:#fff;padding:6px 8px;border-radius:999px;font-size:12px}
+.ad{height:120px;border-radius:10px;background:linear-gradient(90deg,#ffedd5,#ffe4e6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#7c2d12}
+.newsletter input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);margin-bottom:8px}
+.author{display:flex;gap:12px;align-items:center}
+.author img{width:64px;height:64px;border-radius:12px;object-fit:cover}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:6px 10px;background:#f1f5f9;border-radius:8px;font-size:13px}
+.progress-reading{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:rgba(0,0,0,0.06);padding:6px;border-radius:30px;z-index:9999;display:flex;gap:8px;align-items:center}
+.progress-reading .bar{height:8px;width:220px;background:rgba(0,0,0,0.08);border-radius:10px;overflow:hidden}
+.progress-reading .bar .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#7dd3fc)}
+.footer{
+  max-width:1200px;margin:26px auto;padding:28px 20px;text-align:center;color:var(--muted)
+}
+
+@media(max-width:980px){
+  .container{grid-template-columns:1fr;gap:20px;padding:0 18px}
+  .progress-reading{left:16px;transform:none;bottom:90px}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-wrap"><div class="progress-bar" id="topProgress"></div></div>
+
+<header class="header">
+  <div class="logo">TechSphere</div>
+  <div class="header-right">
+    <div class="search-inline">
+      <i class="fa fa-magnifying-glass"></i>
+      <input id="inlineSearch" placeholder="Search articles..." />
+    </div>
+    <button class="icon-btn" id="darkToggle"><i class="fa fa-moon"></i></button>
+    <button class="icon-btn" id="menuToggle"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="main">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <h1 style="margin:0">Latest Articles <span class="badge" id="articlesCount">9</span></h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="meta" style="font-size:13px">By <strong>TechSphere Team</strong></div>
+      </div>
+    </div>
+
+    <div class="articles" id="articlesGrid">
+
+      <article class="card animated" data-title="Understanding Web Performance">
+        <div class="media"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>Understanding Web Performance</h3>
+        <div class="meta">Nov 12 · 8 min read</div>
+        <p class="excerpt">Performance is king in web experiences. Learn how to optimize frontend resources and measure real metrics.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+      <article class="card animated" data-title="CSS Tricks for Modern UI">
+        <div class="media"><img src="https://images.unsplash.com/photo-1523475496153-3a3d2f2a8b4f?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>CSS Tricks for Modern UI</h3>
+        <div class="meta">Oct 30 · 6 min read</div>
+        <p class="excerpt">Advanced CSS techniques including gradients, glassmorphism, and animated micro-interactions.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+      <article class="card animated" data-title="Building Accessible Components">
+        <div class="media"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>Building Accessible Components</h3>
+        <div class="meta">Sep 18 · 7 min read</div>
+        <p class="excerpt">Accessibility is essential. Learn patterns to make your UI usable by everyone.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+      <article class="card animated" data-title="Intro to Web Security">
+        <div class="media"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>Intro to Web Security</h3>
+        <div class="meta">Aug 22 · 9 min read</div>
+        <p class="excerpt">Common vulnerabilities and how to protect your application from attacks.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+      <article class="card animated" data-title="Progressive Web Apps">
+        <div class="media"><img src="https://images.unsplash.com/photo-1504691342899-665f5e6c9f1c?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>Progressive Web Apps</h3>
+        <div class="meta">Jul 11 · 10 min read</div>
+        <p class="excerpt">PWAs combine the best of web and native apps — offline support, fast loading, push notifications.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+      <article class="card animated" data-title="State Management Patterns">
+        <div class="media"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>State Management Patterns</h3>
+        <div class="meta">Jun 05 · 12 min read</div>
+        <p class="excerpt">Compare patterns for managing app state: local, global, event-driven, and server-driven.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+      <article class="card animated" data-title="Design Systems 101">
+        <div class="media"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>Design Systems 101</h3>
+        <div class="meta">May 21 · 11 min read</div>
+        <p class="excerpt">Scalable components, tokens, and documentation — creating consistency across teams.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+      <article class="card animated" data-title="Micro Frontends Overview">
+        <div class="media"><img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>Micro Frontends Overview</h3>
+        <div class="meta">Apr 08 · 9 min read</div>
+        <p class="excerpt">Break large apps into smaller deployable pieces for independent teams and faster releases.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+      <article class="card animated" data-title="Automation with CI/CD">
+        <div class="media"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+        <h3>Automation with CI/CD</h3>
+        <div class="meta">Mar 02 · 8 min read</div>
+        <p class="excerpt">Reliable pipelines and testing strategies to ship quality software fast.</p>
+        <a class="read-btn" href="#">Read article <i class="fa fa-arrow-right"></i></a>
+      </article>
+
+    </div>
+  </section>
+
+  <aside class="sidebar">
+    <div class="widget">
+      <h4>Search</h4>
+      <div class="search-box">
+        <input id="sidebarSearch" placeholder="Search posts, tags, authors" />
+        <button id="sidebarSearchBtn" style="padding:10px;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer">Go</button>
+      </div>
+    </div>
+
+    <div class="widget">
+      <h4>Trending Posts</h4>
+      <ul class="trending" style="padding:0;margin:0">
+        <li><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"><div><strong>Web Performance</strong><div style="font-size:13px;color:var(--muted)">Nov 12</div></div></li>
+        <li><img src="https://images.unsplash.com/photo-1523475496153-3a3d2f2a8b4f?auto=format&fit=crop&w=600&q=80"><div><strong>CSS Tricks</strong><div style="font-size:13px;color:var(--muted)">Oct 30</div></div></li>
+        <li><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=600&q=80"><div><strong>Accessibility</strong><div style="font-size:13px;color:var(--muted)">Sep 18</div></div></li>
+      </ul>
+    </div>
+
+    <div class="widget">
+      <h4>Categories</h4>
+      <div class="categories">
+        <div class="cat">Frontend</div>
+        <div class="cat">Design</div>
+        <div class="cat">DevOps</div>
+        <div class="cat">Security</div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <h4>Tags</h4>
+      <div class="tags">
+        <div class="tag">UI</div>
+        <div class="tag">React</div>
+        <div class="tag">CSS</div>
+        <div class="tag">Performance</div>
+        <div class="tag">PWA</div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <h4>Sponsored</h4>
+      <div class="ad">Grow with Tech Ads</div>
+    </div>
+
+    <div class="widget newsletter">
+      <h4>Subscribe</h4>
+      <input id="newsletterEmail" placeholder="Your email address" />
+      <button id="subscribeBtn" style="margin-top:8px;padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer">Subscribe</button>
+    </div>
+
+    <div class="widget">
+      <h4>Author</h4>
+      <div class="author">
+        <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=800&q=80" alt="">
+        <div>
+          <div style="font-weight:700">TechSphere Team</div>
+          <div style="font-size:13px;color:var(--muted)">Curating articles on web, design, and engineering.</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</main>
+
+<div class="progress-reading" id="readingUI">
+  <div style="font-size:13px;color:var(--muted)">Reading</div>
+  <div class="bar"><div class="fill" id="readingBar"></div></div>
+  <div id="readingPercent" style="font-weight:700;color:var(--muted);font-size:13px">0%</div>
+</div>
+
+<div class="footer">© 2025 TechSphere — curated tech articles & resources</div>
+
+<script>
+const topProgress = document.getElementById('topProgress');
+const readingBar = document.getElementById('readingBar');
+const readingPercent = document.getElementById('readingPercent');
+const articles = document.querySelectorAll('.animated');
+const articlesGrid = document.getElementById('articlesGrid');
+const inlineSearch = document.getElementById('inlineSearch');
+const sidebarSearch = document.getElementById('sidebarSearch');
+const sidebarSearchBtn = document.getElementById('sidebarSearchBtn');
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+const darkToggle = document.getElementById('darkToggle');
+const subscribeBtn = document.getElementById('subscribeBtn');
+const articlesCount = document.getElementById('articlesCount');
+
+function handleScroll(){
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = (window.scrollY / docHeight) * 100;
+  topProgress.style.width = scrolled + '%';
+  const mainStart = document.querySelector('.main').offsetTop;
+  const mainEnd = document.querySelector('.main').offsetTop + document.querySelector('.main').offsetHeight - window.innerHeight;
+  const readProgress = Math.max(0, Math.min(100, ((window.scrollY - mainStart) / (mainEnd - mainStart)) * 100));
+  readingBar.style.width = (isNaN(readProgress) ? 0 : readProgress) + '%';
+  readingPercent.textContent = Math.round(isNaN(readProgress) ? 0 : readProgress) + '%';
+  if(window.scrollY > 100){ document.getElementById('readingUI').style.display = 'flex' } else { document.getElementById('readingUI').style.display = 'none' }
+}
+window.addEventListener('scroll', handleScroll);
+handleScroll();
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible') }
+  })
+},{threshold:0.12});
+articles.forEach(a=>observer.observe(a));
+
+function filterArticles(query){
+  const q = query.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('#articlesGrid article').forEach(card=>{
+    const title = card.dataset.title.toLowerCase();
+    if(title.includes(q)){ card.style.display='block'; visible++ } else { card.style.display='none' }
+  });
+  articlesCount.textContent = visible;
+}
+inlineSearch.addEventListener('input',e=>filterArticles(e.target.value));
+sidebarSearchBtn.addEventListener('click',()=>filterArticles(sidebarSearch.value));
+
+menuToggle.addEventListener('click',()=>navMenu.classList.toggle('show'));
+darkToggle.addEventListener('click',()=>document.body.classList.toggle('dark'));
+
+subscribeBtn.addEventListener('click',()=>{
+  const email = document.getElementById('newsletterEmail').value.trim();
+  if(email && email.includes('@')){ subscribeBtn.textContent='Subscribed'; subscribeBtn.style.background='#10b981'; setTimeout(()=>{subscribeBtn.textContent='Subscribe'; subscribeBtn.style.background='var(--accent)'},3000) } else { subscribeBtn.textContent='Invalid email'; setTimeout(()=>{subscribeBtn.textContent='Subscribe'},2000) }
+});
+filterArticles('');
+</script>
+
+</body>
+</html>

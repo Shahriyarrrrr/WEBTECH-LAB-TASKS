@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f3f4f6;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(to right, #0052cc, #007bff);
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.profile-box {
+    width: 60%;
+    max-width: 650px;
+    background: #ffffff;
+    margin: 40px auto;
+    padding: 30px;
+    border: 2px solid #d0d7e2;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+.profile-img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 18px;
+    border: 4px solid #007bff;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.dept {
+    font-size: 18px;
+    color: #0052cc;
+    margin-bottom: 6px;
+}
+
+.student-id {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 18px;
+}
+
+.bio {
+    font-size: 16px;
+    line-height: 1.6em;
+    color: #555;
+    padding: 0 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 45px;
+    background: #111;
+    color: white;
+    font-size: 14px;
+}
