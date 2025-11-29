@@ -32,7 +32,7 @@ This repository contains structured solutions for **HTML**, **CSS**, **JavaScrip
 
 ---
 
-## 🧪 **Latest Folder: JS_Practice_Task/**
+
 This folder contains all advanced JavaScript tasks including:
 
 - Real-time validation  
