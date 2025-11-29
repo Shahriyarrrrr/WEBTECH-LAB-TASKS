@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ULTRA PRO Theme Toggle</title>
+  <link rel="stylesheet" href="L3_style.css" />
+</head>
+<body id="page">
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <header class="header">
+    <div class="brand">
+      <h1>My Portfolio (ULTRA PRO)</h1>
+      <p class="tag">Premium theme with animated background & particles</p>
+    </div>
+
+    <div class="controls">
+      <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode" role="switch" tabindex="0">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><defs><linearGradient id="gSun" x1="0" x2="1"><stop offset="0" stop-color="#FFD166"/><stop offset="1" stop-color="#FF7AB6"/></linearGradient></defs><circle cx="12" cy="12" r="4" fill="url(#gSun)"></circle><g stroke="url(#gSun)" stroke-width="1.2" stroke-linecap="round"><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 18.36l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M18.36 5.64l1.42-1.42"/></g></svg>
+
+        <svg class="icon icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><defs><linearGradient id="gMoon" x1="0" x2="1"><stop offset="0" stop-color="#9AE6B4"/><stop offset="1" stop-color="#60A5FA"/></linearGradient></defs><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="url(#gMoon)"/></svg>
+
+        <span class="knob" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="hero">
+      <h2 id="headline">Design that moves</h2>
+      <p id="subhead">This ULTRA PRO demo synchronises animated gradients, particles and theme transitions.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">Project A</article>
+      <article class="card">Project B</article>
+      <article class="card">Project C</article>
+      <article class="card">Project D</article>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 — ULTRA PRO demo</footer>
+
+  <script src="L3_script.js"></script>
+</body>
+</html>

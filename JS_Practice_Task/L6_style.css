@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #dbeafe, #f1f5f9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+}
+
+/* Center Box */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.clock-card {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(14px);
+    padding: 40px 60px;
+    border-radius: 22px;
+    box-shadow: 0 20px 42px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+/* Time */
+.time {
+    font-size: 64px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 12px;
+    transition: all 0.2s ease;
+}
+
+/* Seconds pulse animation */
+.time .pulse {
+    animation: pulse 0.4s ease;
+}
+
+@keyframes pulse {
+    0%   { opacity: 0.4; transform: scale(0.97); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Date */
+.date {
+    font-size: 20px;
+    color: #475569;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+/* Button */
+.toggle-btn {
+    margin-top: 22px;
+    padding: 10px 24px;
+    background: #0f172a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.25s ease;
+}
+
+.toggle-btn:hover {
+    background: #1e293b;
+}

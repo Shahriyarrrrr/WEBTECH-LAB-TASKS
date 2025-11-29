@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahriyar Rahman | Portfolio</title>
+    <link rel="stylesheet" href="L9_style.css">
+</head>
+<body>
+
+<!-- Theme Toggle -->
+<div class="theme-toggle">
+    <label class="switch">
+        <input type="checkbox" id="themeSwitch">
+        <span class="slider"></span>
+    </label>
+</div>
+
+<!-- HERO SECTION -->
+<header class="hero">
+    <img src="profile.jpg" alt="Profile Photo" class="profile-pic">
+
+    <h1 class="hero-name">Shahriyar Rahman</h1>
+    <p class="hero-id">ID: 22-46247-1 | BSc in CSE</p>
+
+    <h2 class="typing" id="typingText"></h2>
+
+    <nav class="nav">
+        <button class="nav-btn active" data-target="about">About</button>
+        <button class="nav-btn" data-target="skills">Skills</button>
+        <button class="nav-btn" data-target="projects">Projects</button>
+        <button class="nav-btn" data-target="contact">Contact</button>
+    </nav>
+</header>
+
+<main class="container">
+
+    <!-- ABOUT -->
+    <section id="about" class="section show">
+        <h2>About Me</h2>
+        <p>
+            I am <b>Shahriyar Rahman</b>, a Computer Science & Engineering student (ID: <b>22-46247-1</b>).
+            I specialize in <b>AI, Machine Learning, Cybersecurity</b> and modern web development.  
+            Passionate about building intelligent applications, secure systems, and advanced software solutions.
+        </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+        <h2>My Skills</h2>
+
+        <div class="skill-box">
+            <span>JavaScript</span>
+            <div class="bar"><div style="width: 85%"></div></div>
+        </div>
+
+        <div class="skill-box">
+            <span>Python (ML/AI)</span>
+            <div class="bar"><div style="width: 80%"></div></div>
+        </div>
+
+        <div class="skill-box">
+            <span>C# (.NET)</span>
+            <div class="bar"><div style="width: 90%"></div></div>
+        </div>
+
+        <div class="skill-box">
+            <span>SQL / PL-SQL</span>
+            <div class="bar"><div style="width: 88%"></div></div>
+        </div>
+
+        <div class="skill-box">
+            <span>Cybersecurity Basics</span>
+            <div class="bar"><div style="width: 70%"></div></div>
+        </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+                <h3>Hospital Management System</h3>
+                <p>ASP.NET Core API + SQL Server + C#</p>
+            </div>
+
+            <div class="project-card">
+                <h3>MindMate App</h3>
+                <p>Mental health assistant built with modern UI/UX</p>
+            </div>
+
+            <div class="project-card">
+                <h3>FIFA 23 Modded Edition</h3>
+                <p>Custom gameplay & visual enhancements</p>
+            </div>
+
+            <div class="project-card">
+                <h3>SabjeLeLo Desktop App</h3>
+                <p>Vegetable Shop Management System (.NET)</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+
+        <div class="form-box">
+
+            <label>Your Name</label>
+            <input type="text" id="nameInput">
+            <p class="error" id="nameError"></p>
+
+            <label>Email</label>
+            <input type="text" id="emailInput">
+            <p class="error" id="emailError"></p>
+
+            <label>Message</label>
+            <textarea id="msgInput"></textarea>
+            <p class="error" id="msgError"></p>
+
+            <button id="submitBtn" class="submit">Send Message</button>
+            <p id="successMsg" class="success"></p>
+        </div>
+    </section>
+
+</main>
+
+<script src="L9_script.js"></script>
+</body>
+</html>

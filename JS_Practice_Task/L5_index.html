@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Analyzer — Advanced</title>
+  <link rel="stylesheet" href="L5_style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+  <header class="top">
+    <h1>Text Analyzer</h1>
+    <p class="sub">Analyze text instantly with smart metrics, grammar checks, summary & more.</p>
+  </header>
+
+  <main class="content">
+
+    <!-- LEFT SIDE -->
+    <section class="left-panel">
+
+      <label class="panel-title">Enter Text</label>
+      <textarea id="inputText" placeholder="Type or paste your text here..."></textarea>
+
+      <div class="button-row">
+        <button id="analyzeBtn" class="btn primary">Analyze</button>
+        <button id="clearBtn" class="btn danger">Clear</button>
+        <button id="exportReport" class="btn outline">Export</button>
+      </div>
+
+      <label class="panel-title">Reference Text (optional)</label>
+      <textarea id="refText" placeholder="Paste reference text for overlap detection..."></textarea>
+
+      <label class="toggle">
+        <input type="checkbox" id="liveMode">
+        <span>Live analysis</span>
+      </label>
+
+    </section>
+
+    <!-- RIGHT SIDE -->
+    <section class="right-panel" id="resultPanel">
+
+      <!-- METRICS -->
+      <div class="card-grid">
+        <div class="metric-card"><p>Characters</p><h3 id="chars">0</h3></div>
+        <div class="metric-card"><p>No-space characters</p><h3 id="charsNoSpace">0</h3></div>
+        <div class="metric-card"><p>Words</p><h3 id="words">0</h3></div>
+        <div class="metric-card"><p>Sentences</p><h3 id="sentences">0</h3></div>
+        <div class="metric-card"><p>Paragraphs</p><h3 id="paras">0</h3></div>
+        <div class="metric-card"><p>Flesch Score</p><h3 id="flesch">0</h3></div>
+      </div>
+
+      <!-- KEYWORDS -->
+      <div class="card section-card">
+        <h2>Top Keywords</h2>
+        <div id="keywords" class="tag-list"></div>
+      </div>
+
+      <!-- FREQUENT -->
+      <div class="card section-card">
+        <h2>Frequent Words</h2>
+        <div id="freqList"></div>
+      </div>
+
+      <!-- SUGGESTIONS -->
+      <div class="card section-card">
+        <h2>Grammar & Spelling</h2>
+        <div id="suggestions"></div>
+      </div>
+
+      <!-- LONG SENTENCES -->
+      <div class="card section-card">
+        <h2>Long Sentences</h2>
+        <div id="longSentences"></div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="card section-card">
+        <h2>Summary</h2>
+        <div id="summary"></div>
+      </div>
+
+      <!-- REVERSE -->
+      <div class="card section-card">
+        <h2>Reversed Text</h2>
+        <pre id="reversed" class="reverse-box"></pre>
+      </div>
+
+      <!-- OVERLAP -->
+      <div class="card section-card">
+        <h2>Reference Overlap</h2>
+        <div id="overlap"></div>
+      </div>
+
+      <!-- TOOLS -->
+      <div class="tools">
+        <button id="removeSpaces" class="btn mini">Remove extra spaces</button>
+        <button id="removeBlank" class="btn mini">Remove blank lines</button>
+        <button id="toLower" class="btn mini">Lowercase</button>
+        <button id="capSent" class="btn mini">Capitalize sentences</button>
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="L5_script.js"></script>
+</body>
+</html>

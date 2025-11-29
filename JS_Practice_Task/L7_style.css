@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #eef2f7;
+    font-family: "Inter", sans-serif;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 28px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* Preview area */
+.preview-area {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.preview-area h2 {
+    margin-top: 0;
+}
+
+.editable {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #1e293b;
+    transition: all 0.25s ease;
+    border: 0 solid transparent;
+    margin-bottom: 16px;
+}
+
+/* Control Panel */
+.panel {
+    background: #ffffff;
+    padding: 26px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+/* Swatches */
+.swatches {
+    display: flex;
+    gap: 10px;
+}
+
+.swatch {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #cbd5e1;
+}
+
+.tool {
+    margin-bottom: 18px;
+}
+
+.tool label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #334155;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background: #e2e8f0;
+}
+
+.btn:hover { opacity: 0.85; }
+
+.btn.primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn.small {
+    padding: 6px 12px;
+}
+
+.btn.mini {
+    padding: 6px 10px;
+}
+
+/* Align Buttons */
+.align-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.align-btn {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 6px;
+    background: #e2e8f0;
+    border: none;
+}
+
+.align-btn.active {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 22px;
+}
+
+.switch input { display: none; }
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #cbd5e1;
+    border-radius: 34px;
+    transition: 0.3s;
+}
+
+.slider:before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input:checked + .slider {
+    background: #2563eb;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* CSS Export box */
+.css-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 12px;
+    border-radius: 10px;
+    white-space: pre-wrap;
+    font-size: 13px;
+    margin-top: 10px;
+}

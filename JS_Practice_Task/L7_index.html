@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Style Editor v3</title>
+    <link rel="stylesheet" href="L7_style.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- LEFT: Live Preview -->
+    <section class="preview-area">
+        <h2>Live Preview</h2>
+
+        <p id="sampleText" class="editable">
+            This is a sample text. Customize my style using the panel on the right.
+        </p>
+
+        <div class="save-load-row">
+            <button id="saveStyle" class="btn small primary">Save Style</button>
+            <button id="loadStyle" class="btn small">Load Saved</button>
+        </div>
+    </section>
+
+    <!-- RIGHT: Control Panel -->
+    <section class="panel">
+
+        <h2>Style Controls</h2>
+
+        <!-- Background -->
+        <div class="tool">
+            <label>Background Color</label>
+            <input type="color" id="bgPicker" value="#ffffff">
+        </div>
+
+        <div class="tool">
+            <label>Background Presets</label>
+            <div class="swatches">
+                <div class="swatch" data-color="#ffffff"></div>
+                <div class="swatch" data-color="#f1f5f9"></div>
+                <div class="swatch" data-color="#dbeafe"></div>
+                <div class="swatch" data-color="#fff7ae"></div>
+                <div class="swatch" data-color="#dcfce7"></div>
+                <div class="swatch" data-color="rgba(255,255,255,0.6)"></div>
+            </div>
+        </div>
+
+        <!-- Font -->
+        <div class="tool">
+            <label>Font Size</label>
+            <input type="range" id="fontSlider" min="12" max="50" value="18">
+        </div>
+
+        <div class="tool">
+            <label>Font Family</label>
+            <select id="fontFamily">
+                <option value="Inter">Inter</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier New</option>
+            </select>
+        </div>
+
+        <!-- Text transforms -->
+        <div class="tool">
+            <label>Text Transform</label>
+            <div class="btn-row">
+                <button class="btn mini" id="upperBtn">UPPERCASE</button>
+                <button class="btn mini" id="lowerBtn">lowercase</button>
+                <button class="btn mini" id="capBtn">Capitalize</button>
+            </div>
+        </div>
+
+        <!-- Alignments -->
+        <div class="tool">
+            <label>Text Align</label>
+            <div class="align-buttons">
+                <button class="align-btn" data-align="left">Left</button>
+                <button class="align-btn" data-align="center">Center</button>
+                <button class="align-btn" data-align="right">Right</button>
+            </div>
+        </div>
+
+        <!-- Spacing -->
+        <div class="tool">
+            <label>Padding</label>
+            <input type="range" id="paddingSlider" min="0" max="60" value="18">
+        </div>
+
+        <div class="tool">
+            <label>Margin</label>
+            <input type="range" id="marginSlider" min="0" max="60" value="0">
+        </div>
+
+        <!-- Border -->
+        <div class="tool">
+            <label>Border Width</label>
+            <input type="range" id="borderWidth" min="0" max="12" value="0">
+        </div>
+
+        <div class="tool">
+            <label>Border Color</label>
+            <input type="color" id="borderColor" value="#000000">
+        </div>
+
+        <div class="tool">
+            <label>Border Style</label>
+            <select id="borderStyle">
+                <option value="solid">Solid</option>
+                <option value="dashed">Dashed</option>
+                <option value="dotted">Dotted</option>
+            </select>
+        </div>
+
+        <!-- Radius & Shadow -->
+        <div class="tool">
+            <label>Rounded Corners</label>
+            <input type="range" id="radiusSlider" min="0" max="40" value="12">
+        </div>
+
+        <div class="tool">
+            <label>Shadow</label>
+            <label class="switch">
+                <input type="checkbox" id="shadowToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- Reset -->
+        <button id="resetBtn" class="btn reset">Reset</button>
+
+        <!-- CSS Export -->
+        <h3 class="export-title">Generated CSS</h3>
+        <pre id="cssOutput" class="css-box">/* Your CSS will appear here */</pre>
+
+    </section>
+</div>
+
+<script src="L7_script.js"></script>
+</body>
+</html>
