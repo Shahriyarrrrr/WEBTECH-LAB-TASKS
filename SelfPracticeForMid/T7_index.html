@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Upgraded Multi-Step Form</title>
+  <link rel="stylesheet" href="T7_style.css"/>
+</head>
+<body>
+  <main class="card" role="main">
+    <header class="header">
+      <h1>Registration</h1>
+      <div class="progress-wrap" aria-hidden="true">
+        <div id="progressBar" class="progress-bar" style="width:0%"></div>
+      </div>
+    </header>
+
+    <nav class="steps" aria-label="Form steps">
+      <button class="step active" data-step="1" aria-current="step"><span class="icon">👤</span><span class="label">Personal</span></button>
+      <div class="sep" aria-hidden="true"></div>
+      <button class="step" data-step="2"><span class="icon">📍</span><span class="label">Address</span></button>
+      <div class="sep" aria-hidden="true"></div>
+      <button class="step" data-step="3"><span class="icon">✅</span><span class="label">Confirm</span></button>
+    </nav>
+
+    <section class="slides" id="slides">
+      <form id="multiForm" novalidate>
+
+        <fieldset class="slide active" data-step="1">
+          <h2>Personal Information</h2>
+          <label class="field">
+            <span>Full name</span>
+            <input id="name" name="name" type="text" inputmode="text" autocomplete="name" required/>
+            <small class="error" id="err-name"></small>
+          </label>
+
+          <label class="field">
+            <span>Email</span>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required/>
+            <small class="error" id="err-email"></small>
+          </label>
+
+          <label class="field">
+            <span>Phone</span>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+8801..." />
+            <small class="hint">Optional</small>
+          </label>
+
+          <div class="controls">
+            <div></div>
+            <div class="btns">
+              <button type="button" class="btn primary" id="next1">Next</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="slide" data-step="2">
+          <h2>Address</h2>
+
+          <label class="field">
+            <span>Street</span>
+            <input id="street" name="street" type="text" inputmode="text" autocomplete="street-address" required/>
+            <small class="error" id="err-street"></small>
+          </label>
+
+          <label class="field two">
+            <div>
+              <span>City</span>
+              <input id="city" name="city" type="text" inputmode="text" autocomplete="address-level2" required/>
+              <small class="error" id="err-city"></small>
+            </div>
+            <div>
+              <span>ZIP</span>
+              <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" required/>
+              <small class="error" id="err-zip"></small>
+            </div>
+          </label>
+
+          <div class="controls">
+            <div class="btns">
+              <button type="button" class="btn" id="back2">Back</button>
+            </div>
+            <div class="btns">
+              <button type="button" class="btn primary" id="next2">Next</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="slide" data-step="3">
+          <h2>Review & Submit</h2>
+          <div id="summary" class="summary" aria-live="polite"></div>
+
+          <div class="controls">
+            <div class="btns">
+              <button type="button" class="btn" id="back3">Back</button>
+            </div>
+            <div class="btns">
+              <button type="button" class="btn secondary" id="reviewBtn">Review</button>
+              <button type="submit" class="btn primary" id="submitBtn">Submit</button>
+            </div>
+          </div>
+        </fieldset>
+
+      </form>
+    </section>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <div id="reviewModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+      <div class="modal-card">
+        <h3 id="reviewTitle">Review your submission</h3>
+        <div id="reviewContent" class="review-content"></div>
+        <div class="modal-actions">
+          <button id="closeReview" class="btn">Edit</button>
+          <button id="confirmSubmit" class="btn primary">Confirm & Submit</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+<script src="T7_app.js"></script>
+</body>
+</html>

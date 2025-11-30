@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Advanced Audio Player</title>
+<link rel="stylesheet" href="T6_style.css"/>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <h1>Advanced Audio Player</h1>
+    <div class="hdr-actions">
+      <label class="switch"><input id="themeToggle" type="checkbox"/><span class="slider"></span></label>
+      <button id="importFiles">Add Files</button>
+      <input id="filePicker" type="file" accept="audio/*" multiple style="display:none"/>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="left">
+      <div class="player-card">
+        <audio id="audio" crossorigin="anonymous"></audio>
+
+        <div class="meta">
+          <div id="trackTitle">No track</div>
+          <div class="time">
+            <span id="currentTime">0:00</span>
+            <input id="seek" type="range" min="0" max="100" value="0"/>
+            <span id="duration">0:00</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="prev">⏮</button>
+          <button id="play">▶</button>
+          <button id="pause">⏸</button>
+          <button id="stop">■</button>
+          <button id="next">⏭</button>
+        </div>
+
+        <div class="row">
+          <label>Volume<input id="volume" type="range" min="0" max="1" step="0.01" value="1"/></label>
+          <label>Speed
+            <select id="speed">
+              <option value="0.5">0.5x</option>
+              <option value="0.75">0.75x</option>
+              <option value="1" selected>1x</option>
+              <option value="1.25">1.25x</option>
+              <option value="1.5">1.5x</option>
+              <option value="2">2x</option>
+            </select>
+          </label>
+          <div class="ab-loop">
+            <button id="setA">Set A</button>
+            <button id="setB">Set B</button>
+            <button id="toggleAB">A-B Off</button>
+          </div>
+        </div>
+
+        <div class="visual-wrap">
+          <canvas id="waveCanvas"></canvas>
+          <canvas id="freqCanvas"></canvas>
+        </div>
+
+        <div class="actions">
+          <button id="download">Download</button>
+          <button id="share">Share</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="playlist-panel">
+        <div class="plist-header">
+          <h2>Playlist</h2>
+          <div class="plist-actions">
+            <button id="sortBtn">Sort</button>
+            <button id="clearPlaylist">Clear</button>
+          </div>
+        </div>
+        <ul id="playlist" class="playlist"></ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="T6_app.js"></script>
+</body>
+</html>

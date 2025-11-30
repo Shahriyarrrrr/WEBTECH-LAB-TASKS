@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Real-Time Form Validator — Enhanced</title>
+  <link rel="stylesheet" href="T2_style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="top">
+      <h1>Sign Up</h1>
+      <div class="theme-toggle">
+        <label class="switch">
+          <input id="themeToggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+        <span id="themeLabel">Dark</span>
+      </div>
+    </header>
+
+    <form id="signupForm" novalidate>
+      <div class="field">
+        <label for="username">Username</label>
+        <div class="username-row">
+          <input id="username" name="username" type="text" autocomplete="username" required />
+          <button type="button" id="suggestUserBtn" class="ghost">Suggest</button>
+        </div>
+        <div class="hint" id="usernameHint"></div>
+        <ul id="usernameSuggestions" class="mini-suggestions hidden" role="listbox"></ul>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <div class="email-wrapper">
+          <input id="email" name="email" type="email" autocomplete="email" required />
+          <ul id="emailSuggestions" class="suggestions hidden" role="listbox" aria-label="Email suggestions"></ul>
+        </div>
+        <div class="hint" id="emailHint"></div>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="pw-row">
+          <input id="password" name="password" type="password" autocomplete="new-password" required />
+          <button type="button" id="pwToggle" class="ghost">Show</button>
+        </div>
+        <div class="caps hidden" id="capsWarn">Caps Lock is ON</div>
+        <div class="pw-meter" id="pwMeter">
+          <div class="pw-bar" id="pwBar"></div>
+        </div>
+        <div class="pw-text" id="pwText"></div>
+        <ul class="pw-rules" id="pwRules">
+          <li data-rule="length">8+ characters</li>
+          <li data-rule="lower">lowercase letter</li>
+          <li data-rule="upper">uppercase letter</li>
+          <li data-rule="number">number</li>
+          <li data-rule="special">special character</li>
+        </ul>
+        <div class="breach hidden" id="breachWarn"></div>
+      </div>
+
+      <div class="actions">
+        <button id="submitBtn" type="submit" disabled>Create account</button>
+      </div>
+
+      <div id="result" class="result hidden" role="status"></div>
+    </form>
+  </main>
+
+  <template id="loadingTpl">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 18v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.93 4.93l2.83 2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16.24 16.24l2.83 2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.93 19.07l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </template>
+
+  <script src="T2_app.js" defer></script>
+</body>
+</html>
