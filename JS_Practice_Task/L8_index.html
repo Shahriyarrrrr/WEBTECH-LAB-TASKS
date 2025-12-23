@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dynamic Form</title>
+    <link rel="stylesheet" href="L8_style.css">
+</head>
+<body>
+
+<!-- THEME TOGGLE -->
+<div class="theme-toggle">
+    <label class="switch">
+        <input type="checkbox" id="themeSwitch">
+        <span class="slider"></span>
+    </label>
+    <span class="theme-label" id="themeLabel">Light Mode</span>
+</div>
+
+<div class="wrapper">
+
+    <h1>Registration Form</h1>
+
+    <div class="form-box">
+
+        <!-- USER TYPE -->
+        <label class="label">Select User Type</label>
+        <select id="userType" class="select">
+            <option value="" disabled selected>Select...</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+        </select>
+
+        <!-- STUDENT FIELD -->
+        <div id="rollField" class="field animated hidden">
+            <label>Roll Number</label>
+            <div class="input-wrap">
+                <input type="text" id="roll" placeholder="Enter roll number">
+            </div>
+        </div>
+
+        <!-- TEACHER FIELD -->
+        <div id="deptField" class="field animated hidden">
+            <label>Department</label>
+            <div class="input-wrap">
+                <input type="text" id="dept" placeholder="Enter department">
+            </div>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button id="submitBtn" class="submit-btn hidden">Submit</button>
+
+        <p id="msg" class="msg"></p>
+
+    </div>
+
+</div>
+
+<script src="L8_script.js"></script>
+</body>
+</html>

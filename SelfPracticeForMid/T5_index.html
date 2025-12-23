@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Advanced File Upload — All Upgrades</title>
+  <link rel="stylesheet" href="T5_style.css" />
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <h2>Upload Console</h2>
+
+    <div class="section">
+      <label>Choose or Drop Images</label>
+      <div id="dropZone" class="drop-zone">
+        <p>Drop images here or click to browse (Max 2MB original; will convert to WebP)</p>
+        <input id="fileInput" type="file" accept="image/*" multiple />
+      </div>
+      <div class="btn-row">
+        <button id="pasteHint">Paste (Ctrl+V)</button>
+        <button id="cropToggle">Enable Crop Before Add</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <label>Layout Mode</label>
+      <div class="btn-row">
+        <button id="layoutGrid" class="active">Grid</button>
+        <button id="layoutList">List</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <label>Cloud Providers</label>
+      <div class="provider">
+        <h4>Supabase</h4>
+        <input id="supabaseUrl" placeholder="Supabase URL" />
+        <input id="supabaseKey" placeholder="Supabase Anon Key" />
+        <input id="supabaseBucket" placeholder="Bucket name" />
+        <div class="btn-row">
+          <button id="initSupabase">Init Supabase</button>
+          <button id="uploadSupabase">Upload to Supabase</button>
+        </div>
+        <div id="supabaseStatus" class="status">Not initialized</div>
+      </div>
+
+      <div class="provider">
+        <h4>Firebase</h4>
+        <textarea id="firebaseConfig" placeholder='Paste Firebase config JSON here (apiKey, authDomain, projectId, storageBucket, appId)'></textarea>
+        <div class="btn-row">
+          <button id="initFirebase">Init Firebase</button>
+          <button id="uploadFirebase">Upload to Firebase</button>
+        </div>
+        <div id="firebaseStatus" class="status">Not initialized</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <label>Actions</label>
+      <div class="btn-row">
+        <button id="exportJson">Export JSON</button>
+        <button id="importJson">Import JSON</button>
+        <input id="importFile" type="file" accept="application/json" style="display:none" />
+      </div>
+      <div class="progress-row">
+        <div id="totalProgress" class="total-progress"><div class="bar" style="width:0%"></div></div>
+        <div id="progressText">0 / 0</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <main class="main">
+    <div class="toolbar">
+      <div>Converted to WebP automatically. Drag thumbnails to reorder. Click thumbnail to crop/edit. Remove to delete.</div>
+    </div>
+
+    <div id="previewArea" class="preview-area grid"></div>
+
+  </main>
+</div>
+
+<div id="cropModal" class="modal hidden">
+  <div class="modal-card">
+    <h3>Crop Image</h3>
+    <div id="cropContainer" class="crop-container">
+      <img id="cropImage" />
+      <div id="cropBox" class="crop-box"></div>
+    </div>
+    <div class="crop-controls">
+      <label>Aspect <select id="cropAspect"><option value="free">Free</option><option value="1">1:1</option><option value="16/9">16:9</option><option value="4/3">4:3</option></select></label>
+      <div class="btn-row">
+        <button id="applyCrop">Apply</button>
+        <button id="cancelCrop">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input id="tmpLink" type="file" style="display:none" />
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
+<script src="T5_app.js"></script>
+</body>
+</html>

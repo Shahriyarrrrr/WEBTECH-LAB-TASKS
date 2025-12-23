@@ -1,0 +1,51 @@
+:root{
+  --bg:#f3f4f6;
+  --panel:#ffffff;
+  --accent:#2563eb;
+  --muted:#6b7280;
+  --danger:#ef4444;
+  --radius:12px;
+  --glass: rgba(2,6,23,0.04);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg)}
+.app{display:flex;flex-direction:column;height:100vh}
+.top{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--glass)}
+.top h1{margin:0;font-size:16px}
+.hdr-actions{display:flex;gap:10px;align-items:center}
+.switch{position:relative;display:inline-block;width:46px;height:26px}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:26px;transition:.2s}
+.slider:before{position:absolute;content:"";height:20px;width:20px;left:3px;top:3px;background:white;border-radius:50%;transition:.2s}
+.switch input:checked + .slider{background:var(--accent)}
+.switch input:checked + .slider:before{transform:translateX(20px)}
+.main{display:flex;flex:1;gap:16px;padding:16px}
+.left{flex:2}
+.right{width:320px}
+.player-card{background:var(--panel);padding:16px;border-radius:12px;border:1px solid var(--glass);box-shadow:0 10px 30px rgba(2,6,23,0.04);display:flex;flex-direction:column;gap:12px}
+.meta{display:flex;flex-direction:column;gap:8px}
+#trackTitle{font-weight:700}
+.time{display:flex;align-items:center;gap:8px}
+#seek{flex:1}
+.controls{display:flex;gap:10px;justify-content:center}
+.controls button{padding:8px 12px;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer}
+.row{display:flex;gap:12px;align-items:center;justify-content:space-between}
+.row label{display:flex;align-items:center;gap:8px;font-size:14px}
+.ab-loop{display:flex;gap:6px}
+.ab-loop button{padding:6px 8px;border-radius:8px;border:0;background:#e6eef8;cursor:pointer}
+.visual-wrap{display:flex;flex-direction:column;gap:8px}
+canvas{width:100%;height:100px;background:#071227;border-radius:8px}
+#freqCanvas{height:64px}
+.actions{display:flex;gap:8px;justify-content:flex-end}
+.actions button{padding:8px 10px;border-radius:8px;border:0;background:#111827;color:#fff;cursor:pointer}
+.playlist-panel{background:var(--panel);padding:12px;border-radius:12px;border:1px solid var(--glass);height:100%;display:flex;flex-direction:column}
+.plist-header{display:flex;justify-content:space-between;align-items:center}
+.playlist{list-style:none;padding:0;margin:0;margin-top:8px;overflow:auto}
+.playlist li{padding:8px;border-radius:8px;margin-bottom:8px;background:rgba(2,6,23,0.03);display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:grab}
+.playlist li.active{background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.12)}
+.pl-actions{display:flex;gap:6px}
+.pl-actions button{padding:6px;border-radius:6px;border:0;background:#e6eef8;cursor:pointer}
+.dark{background:#071022;color:#e6eef8}
+.dark .player-card{background:#071227;border:1px solid rgba(255,255,255,0.04)}
+.dark canvas{background:#02101b}
+@media (max-width:900px){.main{flex-direction:column}.right{width:100%}}

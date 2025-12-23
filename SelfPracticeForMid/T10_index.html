@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Premium Live Search — Themes & Wheel</title>
+  <meta name="color-scheme" content="light dark" />
+  <script>
+    (function(){
+      const THEME_KEY='premium_search_theme_v1'
+      const ACCENT_KEY='premium_search_accent_v1'
+      const modeKey='premium_search_mode_v1'
+      try{
+        const saved = localStorage.getItem(THEME_KEY)
+        if(saved) document.documentElement.dataset.theme = saved
+        const accent = localStorage.getItem(ACCENT_KEY)
+        if(accent) document.documentElement.style.setProperty('--accent', accent)
+        const mode = localStorage.getItem(modeKey)
+        if(mode) document.documentElement.dataset.searchMode = mode
+      }catch(e){}
+    })()
+  </script>
+  <link rel="stylesheet" href="T10_style.css" />
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <div class="brand">
+      <div class="logo">🔎</div>
+      <div>
+        <div class="title">Premium Live Search</div>
+        <div class="subtitle">Ultra themes · fuzzy & exact · instant highlight</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label class="switch">
+        <input id="fuzzyToggle" type="checkbox" />
+        <span>Fuzzy</span>
+      </label>
+
+      <div class="accent-control">
+        <input id="accentPicker" type="color" title="Pick accent" />
+        <button id="themeWheelBtn" class="wheel-btn" aria-label="Open theme wheel">🎨</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="search-wrap" id="searchWrap">
+    <div class="search-bar">
+      <input id="searchInput" type="search" placeholder="Search items, try 'wood', 'nebu', or 'hoodie'..." autocomplete="off" />
+      <button id="clearBtn" aria-label="Clear search">✕</button>
+    </div>
+    <ul id="suggestions" class="suggestions" role="listbox" aria-label="Suggestions"></ul>
+  </div>
+
+  <main class="content">
+    <div class="meta-row">
+      <div id="count" class="count">50 items</div>
+      <div class="mode-label">Mode: <span id="modeLabel">Fuzzy</span></div>
+    </div>
+
+    <ul id="grid" class="grid" aria-live="polite"></ul>
+  </main>
+
+  <div id="noResults" class="no-results hidden">No items found</div>
+
+  <div id="themeWheel" class="theme-wheel hidden" aria-hidden="true">
+    <button id="wheelClose" class="wheel-close">✕</button>
+    <div class="wheel-center">
+      <div class="wheel-ring" id="wheelRing"></div>
+      <div class="wheel-accent">
+        <input id="wheelAccent" type="color" />
+      </div>
+    </div>
+  </div>
+
+  <template id="itemTpl">
+    <li class="card" tabindex="0"><div class="card-inner"><div class="name"></div></div></li>
+  </template>
+
+  <script src="T10_app.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shahriyar Rahman">
+    <meta name="description" content="Portfolio webpage of Shahriyar Rahman — Computer Science Student preparing for internship.">
+    <meta name="keywords" content="Shahriyar Rahman, portfolio, internship, computer science, student, AIUB">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahriyar Rahman | Portfolio</title>
+
+ 
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #eef1f5;
+            color: #333;
+        }
+
+    
+        header {
+            background: linear-gradient(to right, #0a66c2, #0056a6);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 34px;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            margin: 0 18px;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #d0e6ff;
+        }
+
+     
+        main {
+            padding: 40px;
+            max-width: 950px;
+            margin: auto;
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            border-left: 6px solid #0a66c2;
+            padding-left: 12px;
+            font-size: 22px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #0a66c2;
+            color: white;
+            padding: 14px;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 14px;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        tr:nth-child(even) td {
+            background: #f1f7ff;
+        }
+
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input, textarea {
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #0a66c2;
+            outline: none;
+            box-shadow: 0 0 6px rgba(0,102,204,0.25);
+        }
+
+        button {
+            padding: 14px;
+            background-color: #0a66c2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #074f97;
+        }
+
+    
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .github {
+            background-color: #24292e;
+        }
+
+        .linkedin {
+            background-color: #0a66c2;
+        }
+
+        .github:hover { background-color: #000000; }
+        .linkedin:hover { background-color: #084c92; }
+
+    
+        footer {
+            background: linear-gradient(to right, #0a66c2, #0056a6);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 40px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+        <h1>Shahriyar Rahman</h1>
+        <nav>
+            <a href="#bio">Biography</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+       
+        <section id="bio">
+            <h2>About Me</h2>
+            <p>
+                I am Shahriyar Rahman, a Computer Science & Engineering student with interests in 
+                software development, AI/ML, database systems, and high-performance applications. 
+                I am preparing for an internship while continuously improving my skills through academic 
+                projects, real-world practice, and self-learning.
+            </p>
+
+            <div class="social-links">
+                <a class="github" href="https://github.com/Shahriyarrrrr" target="_blank">GitHub Profile</a>
+                <a class="linkedin" href="https://www.linkedin.com/in/shahriyar-rahman-187a87215/" target="_blank">LinkedIn Profile</a>
+            </div>
+        </section>
+
+  
+        <section id="education">
+            <h2>Educational Qualifications</h2>
+            <table>
+                <tr>
+                    <th>Degree</th>
+                    <th>Institution</th>
+                    <th>Year</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>BSc in CSE</td>
+                    <td>AIUB</td>
+                    <td>Ongoing</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>HSC</td>
+                    <td>ADAMJEE CANTOLMENT COLLEGE</td>
+                    <td>2020</td>
+                    <td>GPA 5.00</td>
+                </tr>
+                <tr>
+                    <td>SSC</td>
+                    <td>NATIONAL IDEAL SCHOOL</td>
+                    <td>2018</td>
+                    <td>GPA 5.00</td>
+                </tr>
+            </table>
+        </section>
+
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+  
+    <footer>
+        © 2025 Shahriyar Rahman — All Rights Reserved.
+    </footer>
+
+</body>
+</html>

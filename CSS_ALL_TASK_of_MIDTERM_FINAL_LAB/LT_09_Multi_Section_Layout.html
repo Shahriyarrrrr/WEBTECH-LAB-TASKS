@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhanced News Portal</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI", sans-serif;
+}
+
+:root{
+--bg:#edf2fa;
+--text:#0f172a;
+--card:rgba(255,255,255,0.6);
+--accent:#1e4fff;
+--accent2:#ff3c7f;
+--shadow:0 8px 35px rgba(0,0,0,0.12);
+--blur:10px;
+}
+
+body.dark{
+--bg:#0b1220;
+--text:#e2e8f0;
+--card:rgba(30,41,59,0.6);
+--accent:#648dff;
+--accent2:#ff5f97;
+--shadow:0 8px 35px rgba(255,255,255,0.08);
+--blur:15px;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
+overflow-x:hidden;
+}
+
+header{
+width:100%;
+padding:45px 20px;
+color:white;
+text-align:center;
+font-size:40px;
+font-weight:800;
+letter-spacing:1px;
+background:linear-gradient(120deg,var(--accent),var(--accent2));
+background-attachment:fixed;
+position:relative;
+}
+
+.news-ticker{
+width:100%;
+background:var(--accent);
+color:white;
+padding:10px;
+font-size:16px;
+overflow:hidden;
+white-space:nowrap;
+animation:ticker 18s linear infinite;
+}
+
+@keyframes ticker{
+0%{transform:translateX(100%);}
+100%{transform:translateX(-100%);}
+}
+
+.search-bar{
+position:fixed;
+top:20px;
+right:25px;
+z-index:50;
+}
+
+.search-bar input{
+padding:10px 15px;
+border-radius:20px;
+border:none;
+outline:none;
+box-shadow:var(--shadow);
+width:220px;
+}
+
+.theme-box{
+position:fixed;
+bottom:25px;
+left:25px;
+background:var(--card);
+backdrop-filter:blur(var(--blur));
+padding:12px 18px;
+border-radius:20px;
+box-shadow:var(--shadow);
+display:flex;
+gap:10px;
+}
+
+.theme-btn{
+width:22px;
+height:22px;
+border-radius:50%;
+cursor:pointer;
+border:2px solid white;
+}
+
+.container{
+width:95%;
+margin:40px auto;
+}
+
+.section{
+display:inline-block;
+vertical-align:top;
+padding:25px;
+margin:15px;
+width:20%;
+background:var(--card);
+backdrop-filter:blur(var(--blur));
+border-radius:14px;
+box-shadow:var(--shadow);
+animation:fade 0.8s ease;
+transition:0.3s;
+}
+
+.main{width:55%;}
+.ads{width:20%;}
+
+.section:hover{
+transform:translateY(-6px);
+}
+
+.section h2{
+font-size:24px;
+margin-bottom:15px;
+color:var(--accent);
+}
+
+.sidebar-item{
+padding:10px 15px;
+cursor:pointer;
+border-radius:8px;
+transition:0.3s;
+font-size:15px;
+}
+
+.sidebar-item:hover{
+background:var(--accent);
+color:white;
+}
+
+.ads-box{
+width:100%;
+height:180px;
+border-radius:12px;
+background-size:cover;
+background-position:center;
+animation:slideAds 12s infinite ease-in-out;
+}
+
+@keyframes slideAds{
+0%{background-image:url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=800');}
+33%{background-image:url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800');}
+66%{background-image:url('https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800');}
+100%{background-image:url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=800');}
+}
+
+.article{
+background:var(--card);
+padding:20px;
+border-radius:14px;
+margin-bottom:20px;
+box-shadow:var(--shadow);
+backdrop-filter:blur(var(--blur));
+transition:0.3s;
+}
+
+.article:hover{
+transform:scale(1.02);
+}
+
+.top-btn{
+position:fixed;
+bottom:30px;
+right:30px;
+background:var(--accent);
+color:white;
+padding:14px 18px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+box-shadow:var(--shadow);
+transition:0.3s;
+}
+
+.top-btn:hover{
+background:var(--accent2);
+}
+
+@keyframes fade{
+0%{opacity:0;transform:translateY(20px);}
+100%{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:1000px){
+.section{width:100%;display:block;}
+.floating-nav{display:none;}
+.theme-box{left:50%;transform:translateX(-50%);}
+.search-bar{right:50%;transform:translateX(50%);}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>DailyFlash Premium News</header>
+
+<div class="news-ticker">Breaking: AI changes the world • Stock Market hits new milestone • New tech innovations emerging every week • Global sports events shake the world • Entertainment industry surprises fans</div>
+
+<div class="search-bar">
+<input type="text" placeholder="Search news…">
+</div>
+
+<div class="theme-box">
+<div class="theme-btn" style="background:#1e4fff;" onclick="setTheme('light')"></div>
+<div class="theme-btn" style="background:#0b1220;" onclick="setTheme('dark')"></div>
+<div class="theme-btn" style="background:#ff3c7f;" onclick="setTheme('pink')"></div>
+</div>
+
+<div class="container">
+
+<div class="section sidebar">
+<h2>Categories</h2>
+<div class="sidebar-item">Politics</div>
+<div class="sidebar-item">Technology</div>
+<div class="sidebar-item">Sports</div>
+<div class="sidebar-item">Business</div>
+<div class="sidebar-item">Entertainment</div>
+<div class="sidebar-item">Science</div>
+</div>
+
+<div class="section main">
+<h2>Top Stories</h2>
+
+<div class="article">
+<h3>AI Revolution 2025</h3>
+<p>Artificial Intelligence continues to reshape industries, bringing automation and boosting global productivity.</p>
+</div>
+
+<div class="article">
+<h3>SpaceX sets new record</h3>
+<p>SpaceX successfully completes another mission, pushing humanity closer to multi-planetary existence.</p>
+</div>
+
+<div class="article">
+<h3>Tech Giants Release New Innovations</h3>
+<p>Cutting-edge smartphones, foldables, and futuristic gadgets are sweeping the global market.</p>
+</div>
+
+</div>
+
+<div class="section ads">
+<h2>Sponsored</h2>
+<div class="ads-box"></div>
+<p style="margin-top:15px;">Smart Deals Available 24/7</p>
+</div>
+
+</div>
+
+<div class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+function setTheme(t){
+if(t==="light"){document.body.classList.remove("dark")}
+else if(t==="dark"){document.body.classList.add("dark")}
+else{document.body.style.background="#ffe3f0"}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shahriyar Rahman">
+    <meta name="description"
+        content="TasteHub - Explore our mouth-watering restaurant menu with starters, main course, desserts, and drinks.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TasteHub Restaurant Menu</title>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #fff4e6;
+            --text: #222;
+            --card: #ffffff;
+            --accent: #ff6a00;
+            --accent-dark: #e65c00;
+            --shadow: rgba(0, 0, 0, 0.18);
+        }
+
+        body.dark {
+            --bg: #0d1117;
+            --text: #e6edf3;
+            --card: #161b22;
+            --accent: #ff8a3d;
+            --accent-dark: #ff7b26;
+            --shadow: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.4s;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--accent-dark), var(--accent));
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0 3px 14px var(--shadow);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 38px;
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 18px;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 16px;
+            background: var(--accent-dark);
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: var(--accent);
+        }
+
+        .dark-toggle {
+            position: fixed;
+            right: 25px;
+            top: 150px;
+            background: var(--accent-dark);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            z-index: 999;
+        }
+
+        .dark-toggle:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .dark-btn {
+            display: none;
+        }
+
+        main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        section {
+            margin-bottom: 50px;
+            padding: 25px;
+            background: var(--card);
+            border-radius: 14px;
+            box-shadow: 0 4px 18px var(--shadow);
+            transition: 0.3s;
+        }
+
+        section:hover {
+            transform: scale(1.01);
+        }
+
+        h2 {
+            border-left: 6px solid var(--accent);
+            padding-left: 12px;
+            font-size: 26px;
+        }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .search-box input {
+            width: 60%;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 2px solid var(--accent-dark);
+            background: var(--card);
+            color: var(--text);
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        article {
+            background: var(--card);
+            border-left: 5px solid var(--accent-dark);
+            padding: 16px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border-radius: 12px;
+            transition: 0.3s;
+            box-shadow: 0 3px 14px var(--shadow);
+        }
+
+        article:hover {
+            transform: translateX(7px);
+        }
+
+        article img {
+            width: 110px;
+            height: 85px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--accent-dark);
+        }
+
+        fieldset {
+            border: 2px solid var(--accent-dark);
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 35px;
+            background: var(--card);
+            box-shadow: 0 3px 14px var(--shadow);
+        }
+
+        legend {
+            padding: 6px 14px;
+            background: var(--accent-dark);
+            color: white;
+            border-radius: 6px;
+            font-size: 18px;
+        }
+
+        aside {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 6px solid var(--accent-dark);
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+
+        .back-top {
+            display: inline-block;
+            background: var(--accent-dark);
+            padding: 8px 14px;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .floating-nav {
+            position: fixed;
+            right: 25px;
+            bottom: 40px;
+            background: var(--accent-dark);
+            padding: 15px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 3px 14px var(--shadow);
+            font-size: 22px;
+        }
+
+        .floating-nav:hover {
+            background: var(--accent);
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 35px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #ffbb77;
+        }
+
+        .social a {
+            margin: 0 10px;
+        }
+
+        @media(max-width: 768px) {
+            nav a {
+                padding: 8px;
+            }
+
+            .search-box input {
+                width: 90%;
+            }
+
+            article {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            article img {
+                width: 100%;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+<button class="dark-toggle" onclick="toggleDark()">🌓</button>
+
+<header>
+    <h1>TasteHub Restaurant</h1>
+    <p>Deliciousness Delivered Fresh Every Day!</p>
+
+    <nav>
+        <a href="#starters">Starters</a>
+        <a href="#maincourse">Main Course</a>
+        <a href="#desserts">Desserts</a>
+        <a href="#drinks">Drinks</a>
+    </nav>
+</header>
+
+<main>
+
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search dishes..." onkeyup="filterMenu()">
+    </div>
+
+    <fieldset>
+        <legend>Chef’s Special</legend>
+
+        <article>
+            <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=800&q=80">
+            <div>
+                <strong>🔥 Grilled Steak Supreme</strong><br>
+                Premium steak grilled perfectly.<br>
+                <span class="price">$24.99</span>
+            </div>
+        </article>
+
+        <article>
+            <img src="https://images.unsplash.com/photo-1546069901-eacef0df6022?auto=format&fit=crop&w=800&q=80">
+            <div>
+                <strong>🔥 Creamy Alfredo Pasta</strong><br>
+                Rich creamy sauce with herbs.<br>
+                <span class="price">$14.99</span>
+            </div>
+        </article>
+    </fieldset>
+
+    <aside>
+        <h3>Daily Offers</h3>
+        • Buy 1 Get 1 Pizza every Friday<br>
+        • Free drink with burger<br>
+        • Students get 10% off
+    </aside>
+
+    <hr>
+
+    <section id="starters">
+        <h2>Starters</h2>
+
+        <div class="menu-list">
+
+            <article data-name="garlic bread starter">
+                <img src="https://images.unsplash.com/photo-1601050690597-df07a1a820d8?auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <strong>Garlic Bread</strong><br>
+                    Toasted bread with garlic & butter.<br>
+                    <span class="price">$5.99</span>
+                </div>
+            </article>
+
+            <article data-name="chicken wings starter spicy">
+                <img src="https://images.unsplash.com/photo-1543352631-4b5f4a5f54df?auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <strong>Spicy Chicken Wings</strong><br>
+                    Crispy wings coated in hot sauce.<br>
+                    <span class="price">$7.99</span>
+                </div>
+            </article>
+
+        </div>
+
+        <a class="back-top" href="#top">Back to Top</a>
+    </section>
+
+    <hr>
+
+    <section id="maincourse">
+        <h2>Main Course</h2>
+
+        <div class="menu-list">
+
+            <article data-name="burger beef main">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <strong>Beef Cheese Burger</strong><br>
+                    Juicy grilled beef with cheese.<br>
+                    <span class="price">$12.99</span>
+                </div>
+            </article>
+
+            <article data-name="rice chicken main">
+                <img src="https://images.unsplash.com/photo-1605470212353-d7d90a6b6fb4?auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <strong>Chicken Rice Bowl</strong><br>
+                    Grilled chicken with seasoned rice.<br>
+                    <span class="price">$10.99</span>
+                </div>
+            </article>
+
+        </div>
+
+        <a class="back-top" href="#top">Back to Top</a>
+    </section>
+
+    <hr>
+
+    <section id="desserts">
+        <h2>Desserts</h2>
+
+        <div class="menu-list">
+
+            <article data-name="chocolate cake dessert">
+                <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <strong>Chocolate Cake</strong><br>
+                    Rich and creamy with cocoa glaze.<br>
+                    <span class="price">$6.49</span>
+                </div>
+            </article>
+
+            <article data-name="ice cream dessert strawberry">
+                <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <strong>Strawberry Ice Cream</strong><br>
+                    Smooth and creamy with berry chunks.<br>
+                    <span class="price">$4.99</span>
+                </div>
+            </article>
+
+        </div>
+
+        <a class="back-top" href="#top">Back to Top</a>
+    </section>
+
+    <hr>
+
+    <section id="drinks">
+        <h2>Drinks</h2>
+
+        <div class="menu-list">
+
+            <article data-name="iced coffee drink">
+                <img src="https://images.unsplash.com/photo-1572715376701-98568319fd0c?auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <strong>Iced Coffee</strong><br>
+                    Cold brew with milk & ice.<br>
+                    <span class="price">$3.99</span>
+                </div>
+            </article>
+
+            <article data-name="lemonade drink">
+                <img src="https://images.unsplash.com/photo-1546170673-2ecbe8fc3b04?auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <strong>Lemonade</strong><br>
+                    Fresh lemons with mint.<br>
+                    <span class="price">$2.99</span>
+                </div>
+            </article>
+
+        </div>
+
+        <a class="back-top" href="#top">Back to Top</a>
+    </section>
+
+    <p style="text-align:center; font-size:20px; margin-top:30px;">
+        <a href="#" style="color:var(--accent-dark); font-weight:bold;">📅 Book a Table</a>
+    </p>
+
+</main>
+
+<div class="floating-nav" onclick="window.location='#top'">
+    ↑
+</div>
+
+<footer>
+    <p>
+        TasteHub Restaurant<br>
+        123 Food Street, Dhaka, Bangladesh<br>
+        Contact: +880 1234 567890<br>
+        Opening Hours: 10 AM - 11 PM Daily
+    </p>
+
+    <div class="social">
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+    </div>
+
+    <p>© 2025 TasteHub Restaurant | All Rights Reserved</p>
+
+    <a href="#top">Back to Top</a>
+</footer>
+
+<script>
+    function toggleDark() {
+        document.body.classList.toggle("dark");
+    }
+
+    function filterMenu() {
+        let q = document.getElementById("search").value.toLowerCase();
+        let items = document.querySelectorAll("article");
+
+        items.forEach(item => {
+            let name = item.getAttribute("data-name");
+            item.style.display = name.includes(q) ? "flex" : "none";
+        });
+    }
+</script>
+
+</body>
+
+</html>

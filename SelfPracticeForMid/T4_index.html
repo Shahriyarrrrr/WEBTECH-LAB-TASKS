@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AI Chat — Full</title>
+  <link rel="stylesheet" href="T4_style.css"/>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="left">
+        <h1>AI Chat</h1>
+        <select id="agentSelect">
+          <option value="assistant">Assistant</option>
+          <option value="helper">Helper</option>
+          <option value="friendly">Friendly Bot</option>
+          <option value="professor">Professor</option>
+        </select>
+      </div>
+      <div class="right">
+        <label class="switch">
+          <input id="themeToggle" type="checkbox"/>
+          <span class="slider"></span>
+        </label>
+        <button id="exportBtn">Export</button>
+        <button id="clearBtn">Clear</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <div id="chatBox" class="chat-box" role="log" aria-live="polite"></div>
+
+      <div class="controls">
+        <div class="row">
+          <button id="voiceBtn" class="icon">🎤</button>
+          <button id="attachBtn" class="icon">📎</button>
+          <input id="fileInput" type="file" style="display:none" multiple />
+          <input id="textInput" placeholder="Type a message" autocomplete="off" />
+          <button id="sendBtn">Send</button>
+        </div>
+        <div class="row low">
+          <label><input id="ttsToggle" type="checkbox"/> TTS</label>
+          <label><input id="soundToggle" type="checkbox" checked/> Sound</label>
+          <label><input id="typingToggle" type="checkbox" checked/> Typing</label>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <template id="msgTpl">
+    <div class="msg">
+      <div class="meta"></div>
+      <div class="bubble"></div>
+      <div class="attachments"></div>
+    </div>
+  </template>
+
+  <script src="T4_app.js"></script>
+</body>
+</html>

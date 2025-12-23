@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Theme Toggle — Auto Save</title>
+  <meta name="color-scheme" content="light dark"/>
+  <script>
+    (function(){
+      const KEY_THEME='user_theme_v1'
+      const KEY_ACCENT='user_accent_v1'
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      let theme = null
+      try { theme = localStorage.getItem(KEY_THEME) } catch(e){}
+      if(!theme) theme = prefersDark ? 'dark' : 'light'
+      if(theme==='dark') document.documentElement.classList.add('dark')
+      else document.documentElement.classList.remove('dark')
+      try{
+        const accent = localStorage.getItem(KEY_ACCENT)
+        if(accent) document.documentElement.style.setProperty('--accent', accent)
+      }catch(e){}
+    })()
+  </script>
+  <link rel="stylesheet" href="T8_style.css"/>
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div class="title">Appearance</div>
+      <div class="controls">
+        <label class="theme-toggle" aria-label="Toggle theme">
+          <input id="themeToggle" type="checkbox" />
+          <span class="track"><span class="knob"></span></span>
+        </label>
+        <label class="accent-picker">
+          <input id="accentInput" type="color" />
+          <span class="accent-sample" id="accentSample" title="Accent color preview"></span>
+        </label>
+      </div>
+    </header>
+
+    <section class="content">
+      <h1>Dark & Light Theme</h1>
+      <p>This demo switches theme smoothly, persists your choice, and lets you pick a custom accent color.</p>
+      <div class="card">
+        <button class="btn primary">Primary action</button>
+        <button class="btn">Neutral action</button>
+        <div class="info">Current theme: <strong id="currentTheme">—</strong></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>Accent color and theme persisted in localStorage. Theme applied before render to avoid flash.</small>
+    </footer>
+  </main>
+
+  <script src="T8_app.js"></script>
+</body>
+</html>

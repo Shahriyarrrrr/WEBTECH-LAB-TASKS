@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="L4_style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Student Management</h1>
+        <p class="subtitle">Admin dashboard</p>
+      </div>
+
+      <div class="controls-top">
+        <div class="search-wrap">
+          <input id="searchBox" class="search" placeholder="Search by name, roll, department..." />
+        </div>
+        <button id="exportBtn" class="btn btn-ghost">Export CSV</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="stats-area">
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-title">Total Students</div>
+            <div id="totalStudents" class="stat-value">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Departments</div>
+            <div id="totalDepts" class="stat-value">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Top Department</div>
+            <div id="popularDept" class="stat-value">—</div>
+          </div>
+        </div>
+
+        <canvas id="deptChart" width="360" height="160" class="chart"></canvas>
+      </section>
+
+      <section class="form-area">
+        <input id="name" placeholder="Student Name" />
+        <input id="roll" placeholder="Roll Number" />
+        <input id="dept" placeholder="Department" />
+        <button id="addBtn" class="btn btn-primary">Add Student</button>
+        <p id="errorMsg" class="error"></p>
+      </section>
+
+      <section class="table-area">
+        <table id="studentTable" class="table">
+          <thead>
+            <tr>
+              <th data-col="name">Name</th>
+              <th data-col="roll">Roll</th>
+              <th data-col="dept">Department</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <div class="pager">
+          <button id="prevPage" class="page-btn">Prev</button>
+          <div id="pageNumbers" class="pages"></div>
+          <button id="nextPage" class="page-btn">Next</button>
+
+          <label class="page-size">
+            <select id="pageSize">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="20">20</option>
+            </select>
+            per page
+          </label>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="L4_script.js"></script>
+</body>
+</html>

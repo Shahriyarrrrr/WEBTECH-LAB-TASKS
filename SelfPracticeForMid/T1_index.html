@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Enhanced Dashboard Grid Builder</title>
+  <link rel="stylesheet" href="T1_style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="title">Dashboard Grid Builder — Enhanced</div>
+    <div class="controls">
+      <button id="addCardBtn">+ Add Card</button>
+      <button id="exportBtn" title="Export layout as JSON">Export JSON</button>
+      <label class="file-btn">
+        <input id="importFile" type="file" accept="application/json" />
+        Import JSON
+      </label>
+      <button id="clearBtn">Clear All</button>
+    </div>
+  </div>
+
+  <div class="optionsbar">
+    <label><input type="checkbox" id="snapToggle" /> Snap to grid</label>
+    <label>Grid size: <input id="gridSize" type="number" min="4" value="20" /></label>
+    <label><input type="checkbox" id="constrainToggle" /> Constrain movement to grid</label>
+    <label><input type="checkbox" id="touchToggle" /> Touch optimizations</label>
+    <button id="downloadState">Download State</button>
+    <button id="loadState">Load State (paste JSON)</button>
+  </div>
+
+  <main>
+    <div id="dashboard" class="dashboard" tabindex="0"></div>
+  </main>
+
+  <template id="card-template">
+    <div class="card" tabindex="0">
+      <div class="card-header" aria-grabbed="false">
+        <div class="card-title">Widget</div>
+        <div class="card-actions">
+          <button class="remove-btn" title="Remove">✕</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Editable content</p>
+      </div>
+      <div class="resize-handle" title="Resize"></div>
+    </div>
+  </template>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <h3>Load JSON</h3>
+      <textarea id="jsonInput" placeholder='Paste JSON here...'></textarea>
+      <div class="modal-actions">
+        <button id="applyJson">Apply</button>
+        <button id="cancelJson">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="T1_app.js" defer></script>
+</body>
+</html>

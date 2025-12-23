@@ -1,0 +1,43 @@
+:root{
+  --bg:#f8fafc;
+  --panel:#ffffff;
+  --text:#0f172a;
+  --muted:#6b7280;
+  --accent:#2563eb;
+  --radius:12px;
+  --glass: rgba(2,6,23,0.04);
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:36px auto;padding:18px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.title{font-weight:700;font-size:18px}
+.controls{display:flex;align-items:center;gap:12px}
+.theme-toggle{display:inline-flex;align-items:center;cursor:pointer}
+.theme-toggle input{display:none}
+.track{width:56px;height:30px;border-radius:999px;background:#e6eef8;display:inline-flex;align-items:center;padding:4px;transition:background .28s ease}
+.track .knob{width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 4px 10px rgba(2,6,23,0.12);transform:translateX(0);transition:transform .28s cubic-bezier(.2,.9,.3,1)}
+.theme-toggle input:checked + .track{background:linear-gradient(90deg,var(--accent),#06b6d4)}
+.theme-toggle input:checked + .track .knob{transform:translateX(26px)}
+.accent-picker{display:flex;align-items:center;gap:8px}
+.accent-picker input{width:36px;height:36px;padding:0;border-radius:8px;border:1px solid var(--glass);background:transparent;cursor:pointer}
+.accent-sample{width:28px;height:28px;border-radius:8px;border:1px solid var(--glass);background:var(--accent)}
+.content h1{margin:0 0 8px}
+.content p{margin:0 0 16px;color:var(--muted)}
+.card{background:var(--panel);padding:16px;border-radius:12px;border:1px solid var(--glass);box-shadow:0 8px 30px rgba(2,6,23,0.04);display:flex;gap:12px;align-items:center}
+.btn{padding:10px 14px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:transparent;cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#fff;border:0;box-shadow:0 8px 20px rgba(37,99,235,0.12)}
+.info{margin-left:auto;color:var(--muted)}
+.footer{margin-top:18px;color:var(--muted);font-size:13px}
+
+.theme-transition *{transition:background-color .28s ease,color .28s ease,border-color .28s ease,box-shadow .28s ease}
+
+.dark{
+  --bg:#0b1220;
+  --panel:#071227;
+  --text:#e6eef8;
+  --muted:#9aa6b2;
+  --glass:rgba(255,255,255,0.04);
+  color-scheme: dark;
+}

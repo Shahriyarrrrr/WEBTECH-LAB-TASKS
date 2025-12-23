@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Image Annotation — Full</title>
+  <link rel="stylesheet" href="T3_style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="controls">
+        <div class="file-row">
+          <input id="imgFiles" type="file" accept="image/*" multiple />
+          <button id="addFromUrl">Add Image URL</button>
+        </div>
+        <div class="img-list" id="imgList"></div>
+        <div class="tool-row">
+          <label>Shape
+            <select id="shapeSelect">
+              <option value="circle">Circle</option>
+              <option value="square">Square</option>
+              <option value="pin">Pin</option>
+            </select>
+          </label>
+          <label>Color
+            <input id="colorSelect" type="color" value="#2563eb" />
+          </label>
+        </div>
+        <div class="action-row">
+          <button id="exportBtn">Export JSON</button>
+          <label class="importLabel">Import
+            <input id="importFile" type="file" accept="application/json" />
+          </label>
+          <button id="pasteBtn">Paste JSON</button>
+        </div>
+        <div class="nav-row">
+          <button id="undoBtn" disabled>Undo</button>
+          <button id="redoBtn" disabled>Redo</button>
+          <button id="zoomIn">＋</button>
+          <button id="zoomOut">－</button>
+          <button id="fitBtn">Fit</button>
+        </div>
+        <div class="legend">Hints: Click image to add marker. Drag marker to move. Right-click marker to edit/delete. Wheel to zoom. Middle-drag to pan.</div>
+      </div>
+
+      <div class="preview">
+        <h3>Markers JSON</h3>
+        <pre id="jsonPreview" class="json"></pre>
+        <h3>Marker List</h3>
+        <ul id="markerList" class="marker-list"></ul>
+      </div>
+    </aside>
+
+    <main class="canvas-area">
+      <div id="imageWrapper" class="image-wrapper">
+        <div id="inner" class="inner">
+          <img id="mainImage" alt="Upload or choose an image" draggable="false" />
+          <div id="markerLayer" class="marker-layer"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="editor" class="modal hidden">
+    <div class="modal-card">
+      <h3>Edit Marker</h3>
+      <label>Label<input id="editLabel" type="text" /></label>
+      <label>Color<input id="editColor" type="color" /></label>
+      <label>Shape
+        <select id="editShape">
+          <option value="circle">Circle</option>
+          <option value="square">Square</option>
+          <option value="pin">Pin</option>
+        </select>
+      </label>
+      <div class="modal-actions">
+        <button id="saveMarker">Save</button>
+        <button id="deleteMarker">Delete</button>
+        <button id="closeEditor">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="T3_app.js"></script>
+</body>
+</html>
