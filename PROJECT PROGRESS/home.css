@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 70px;
+}
+
+.brand {
+  font-size: 28px;
+  font-weight: 900;
+  color: #38bdf8;
+}
+
+.menu a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: #c7d2fe;
+  font-weight: 500;
+}
+
+.menu .cta {
+  padding: 10px 18px;
+  background: #38bdf8;
+  color: #020617;
+  border-radius: 12px;
+}
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 0 70px;
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.hero h1 {
+  font-size: 58px;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #a5b4fc;
+  margin-bottom: 36px;
+}
+
+.hero-actions a {
+  margin-right: 18px;
+  padding: 14px 32px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.primary {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #020617;
+}
+
+.outline {
+  border: 2px solid #38bdf8;
+  color: #38bdf8;
+}
+
+.mission {
+  padding: 90px 70px;
+  text-align: center;
+  background: #020617;
+}
+
+.mission h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.mission p {
+  max-width: 760px;
+  margin: auto;
+  font-size: 18px;
+  color: #c7d2fe;
+}
+
+.roles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding: 90px 70px;
+}
+
+.role-card {
+  background: linear-gradient(145deg, #020617, #0f172a);
+  padding: 40px;
+  border-radius: 22px;
+  border: 1px solid #1e293b;
+}
+
+.role-card h3 {
+  font-size: 22px;
+  color: #38bdf8;
+  margin-bottom: 12px;
+}
+
+.role-card p {
+  color: #c7d2fe;
+}
+
+.alert {
+  padding: 90px 70px;
+  text-align: center;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #020617;
+}
+
+.alert h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.alert p {
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.alert form {
+  max-width: 420px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.alert input {
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.alert button {
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: #020617;
+  color: #e5e7eb;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#msg {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #020617;
+  color: #94a3b8;
+}

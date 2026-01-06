@@ -1,0 +1,78 @@
+<?php
+session_start();
+print_r($_SESSION);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ResQHub | Integrated Crisis Response Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">ResQHub</div>
+  <nav class="menu">
+    <a href="#">Home</a>
+    <a href="#mission">Mission</a>
+    <a href="#roles">Roles</a>
+    <a href="login.html">Login</a>
+    <a href="register.html" class="cta">Register</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>When Every Second Matters,<br>ResQHub Responds</h1>
+    <p>A unified digital platform connecting citizens, volunteers, and authorities during emergencies.</p>
+    <div class="hero-actions">
+      <a href="register.html" class="primary">Request Emergency Help</a>
+      <a href="register.html" class="outline">Become a Volunteer</a>
+    </div>
+  </div>
+</section>
+
+<section id="mission" class="mission">
+  <h2>Our Mission</h2>
+  <p>
+    To eliminate chaos during crises by providing a transparent, real-time,
+    and community-driven emergency response system.
+  </p>
+</section>
+
+<section id="roles" class="roles">
+  <div class="role-card">
+    <h3>Citizens</h3>
+    <p>Submit emergency requests and track help in real time.</p>
+  </div>
+  <div class="role-card">
+    <h3>Volunteers</h3>
+    <p>Accept verified requests and provide life-saving support.</p>
+  </div>
+  <div class="role-card">
+    <h3>Authorities</h3>
+    <p>Monitor crises, manage resources, and coordinate responses.</p>
+  </div>
+</section>
+
+<section class="alert">
+  <h2>Get Emergency Alerts</h2>
+  <p>Receive critical updates during disasters and emergencies.</p>
+
+  <form id="alertForm">
+    <input type="email" id="email" placeholder="Enter your email">
+    <button type="submit">Subscribe</button>
+    <span id="msg"></span>
+  </form>
+</section>
+
+<footer class="footer">
+  <p>© 2025 ResQHub – Integrated Community Crisis Response Platform</p>
+</footer>
+
+<script src="home.js"></script>
+</body>
+</html>
