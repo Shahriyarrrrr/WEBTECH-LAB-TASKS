@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather Forecast</title>
+<style>
+body{font-family:Arial;background:#f2f2f2;margin:0}
+.controls{display:flex;gap:10px;padding:15px;flex-wrap:wrap}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;padding:15px}
+.card{background:#fff;padding:15px;border-radius:8px;animation:fade .4s}
+.rain,.snow{border:2px solid #2196f3}
+@keyframes fade{from{opacity:0;transform:scale(.9)}to{opacity:1}}
+</style>
+</head>
+<body>
+
+<div class="controls">
+<select id="city">
+<option>New York</option>
+<option>London</option>
+<option>Tokyo</option>
+<option>Dhaka</option>
+<option>Sydney</option>
+</select>
+<button id="unit">°C</button>
+<button id="refresh">Refresh</button>
+<span id="time"></span>
+</div>
+
+<div id="stats"></div>
+<div class="cards" id="cards"></div>
+
+<script>
+let unit="C"
+
+function now(){
+document.getElementById("time").innerText=new Date().toLocaleString()
+}
+setInterval(now,1000)
+
+function cToF(t){return t*9/5+32}
+
+function load(){
+document.getElementById("cards").innerHTML="Loading..."
+fetch("weather.php?city="+city.value)
+.then(r=>r.json())
+.then(j=>{
+let avg=0,hot=-999,cold=999
+cards.innerHTML=""
+j.forecast.forEach(d=>{
+let hi=d.temp_high,lo=d.temp_low
+if(unit==="F"){hi=cToF(hi);lo=cToF(lo)}
+avg+=hi
+hot=Math.max(hot,hi)
+cold=Math.min(cold,lo)
+let div=document.createElement("div")
+div.className="card "+(d.condition==="Rain"||d.condition==="Snow"?d.condition.toLowerCase():"")
+div.innerHTML=`<h3>${new Date(d.date).toLocaleDateString("en",{weekday:"long"})}</h3>
+<div>${d.icon}</div>
+<div>${hi.toFixed(1)} / ${lo.toFixed(1)} °${unit}</div>
+<div>${d.condition}</div>
+<div>Humidity ${d.humidity}%</div>
+<div>Wind ${d.wind_speed}</div>`
+cards.appendChild(div)
+})
+stats.innerHTML=`Average Temp: ${(avg/j.forecast.length).toFixed(1)}°${unit} | Hottest: ${hot.toFixed(1)} | Coldest: ${cold.toFixed(1)}`
+})
+.catch(()=>cards.innerHTML="Error loading data")
+}
+
+city.onchange=load
+refresh.onclick=load
+unit.onclick=()=>{unit=unit==="C"?"F":"C";unit.innerText="°"+unit;load()}
+load()
+</script>
+
+</body>
+</html>

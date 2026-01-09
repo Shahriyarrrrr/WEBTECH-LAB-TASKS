@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body>
+
+<button onclick="load()">Load Student Data</button>
+
+<div id="output"></div>
+
+<script>
+function load(){
+    fetch("get_students.php")
+    .then(r=>{
+        if(!r.ok) throw new Error()
+        return r.json()
+    })
+    .then(d=>{
+        if(d.length===0){
+            output.innerHTML="No student data available"
+            return
+        }
+        let t="<table border='1' cellpadding='8'><tr><th>ID</th><th>Name</th><th>Email</th><th>Department</th></tr>"
+        d.forEach(s=>{
+            t+=`<tr><td>${s.id}</td><td>${s.name}</td><td>${s.email}</td><td>${s.department}</td></tr>`
+        })
+        t+="</table>"
+        output.innerHTML=t
+    })
+    .catch(()=>{
+        output.innerHTML="Error loading student data"
+    })
+}
+</script>
+
+</body>
+</html>

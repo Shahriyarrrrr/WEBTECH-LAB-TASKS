@@ -1,0 +1,13 @@
+CREATE DATABASE bookstore_db;
+USE bookstore_db;
+
+CREATE TABLE books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    author VARCHAR(255),
+    isbn VARCHAR(50) UNIQUE,
+    price DECIMAL(10,2),
+    category VARCHAR(100),
+    stock_quantity INT,
+    publication_year YEAR
+);

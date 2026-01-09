@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Calculator</title>
+    <style>
+        body { font-family: Arial; background: #f2f2f2; }
+        .box { width: 400px; margin: 40px auto; background: #fff; padding: 20px; }
+        input, button { width: 100%; padding: 8px; margin-top: 10px; }
+        a { display: block; margin-top: 10px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <form method="post" action="calculate.php">
+        <input type="text" name="name" placeholder="Student Name" required>
+        <input type="number" name="m1" placeholder="Subject 1 Marks" required>
+        <input type="number" name="m2" placeholder="Subject 2 Marks" required>
+        <input type="number" name="m3" placeholder="Subject 3 Marks" required>
+        <input type="number" name="m4" placeholder="Subject 4 Marks" required>
+        <input type="number" name="m5" placeholder="Subject 5 Marks" required>
+        <button type="submit">Calculate</button>
+    </form>
+    <a href="results.php">View All Results</a>
+</div>
+
+</body>
+</html>

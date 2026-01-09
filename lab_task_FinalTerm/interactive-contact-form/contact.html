@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Form</title>
+<style>
+body{font-family:Arial;background:#f2f2f2}
+.box{width:420px;margin:40px auto;background:#fff;padding:20px}
+input,select,textarea,button{width:100%;padding:8px;margin-top:8px}
+.error{color:red;font-size:12px}
+.valid{border:2px solid green}
+.invalid{border:2px solid red}
+#success{color:green;margin-top:10px}
+#loading{display:none}
+</style>
+</head>
+<body>
+
+<div class="box">
+<form id="form">
+<input type="text" id="name" placeholder="Name">
+<div class="error" id="eName"></div>
+
+<input type="email" id="email" placeholder="Email">
+<div class="error" id="eEmail"></div>
+
+<input type="text" id="phone" placeholder="123-456-7890">
+<div class="error" id="ePhone"></div>
+
+<select id="subject">
+<option value="">Select Subject</option>
+<option>General</option>
+<option>Support</option>
+<option>Feedback</option>
+</select>
+<div class="error" id="eSubject"></div>
+
+<textarea id="message" placeholder="Message"></textarea>
+<div class="error" id="eMessage"></div>
+
+<button id="submit" disabled>Submit</button>
+<div id="loading">Submitting...</div>
+<div id="success"></div>
+</form>
+</div>
+
+<script>
+const f=document.getElementById("form")
+const b=document.getElementById("submit")
+const fields=["name","email","phone","subject","message"]
+
+function v(){
+let ok=true
+const n=name.value.trim()
+if(n.length<3||!/^[a-zA-Z ]+$/.test(n)){eName.innerText="Invalid name";name.className="invalid";ok=false}else{eName.innerText="";name.className="valid"}
+
+const p=/^\d{3}-\d{3}-\d{4}$/
+if(!p.test(phone.value)){ePhone.innerText="Invalid phone";phone.className="invalid";ok=false}else{ePhone.innerText="";phone.className="valid"}
+
+if(subject.value===""){eSubject.innerText="Select subject";subject.className="invalid";ok=false}else{eSubject.innerText="";subject.className="valid"}
+
+if(message.value.length<20){eMessage.innerText="Minimum 20 characters";message.className="invalid";ok=false}else{eMessage.innerText="";message.className="valid"}
+
+b.disabled=!ok
+}
+
+fields.forEach(i=>document.getElementById(i).oninput=v)
+
+email.onblur=()=>{
+fetch("validate_email.php?email="+encodeURIComponent(email.value))
+.then(r=>r.json())
+.then(d=>{
+if(!d.valid){eEmail.innerText=d.message;email.className="invalid";b.disabled=true}
+else{eEmail.innerText="";email.className="valid"}
+})
+}
+
+f.onsubmit=e=>{
+e.preventDefault()
+loading.style.display="block"
+const x=new XMLHttpRequest()
+x.timeout=5000
+x.onload=()=>{
+loading.style.display="none"
+const r=JSON.parse(x.responseText)
+if(r.success){
+success.innerText="Submitted. Ref: "+r.ref
+f.reset()
+b.disabled=true
+}else{
+success.innerText=r.message
+}
+}
+x.ontimeout=()=>{loading.style.display="none";success.innerText="Request timeout"}
+x.open("POST","submit_form.php")
+x.setRequestHeader("Content-Type","application/json")
+x.send(JSON.stringify({
+name:name.value,
+email:email.value,
+phone:phone.value,
+subject:subject.value,
+message:message.value
+}))
+}
+</script>
+
+</body>
+</html>

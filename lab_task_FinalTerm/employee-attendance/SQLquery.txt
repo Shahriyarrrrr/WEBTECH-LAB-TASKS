@@ -1,0 +1,21 @@
+CREATE DATABASE company_db;
+USE company_db;
+
+CREATE TABLE employees (
+    emp_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    email VARCHAR(150) UNIQUE,
+    department VARCHAR(100),
+    join_date DATE
+);
+
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    emp_id INT,
+    date DATE,
+    check_in_time TIME,
+    check_out_time TIME,
+    status ENUM('Present','Absent','Late','Half-Day'),
+    FOREIGN KEY (emp_id) REFERENCES employees(emp_id)
+);

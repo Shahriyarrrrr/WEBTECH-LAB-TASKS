@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load Student Data</title>
+</head>
+<body>
+
+<button id="load">Load Student Data</button>
+
+<div id="output"></div>
+
+<script>
+const btn=document.getElementById("load")
+const out=document.getElementById("output")
+
+btn.onclick=()=>{
+    const x=new XMLHttpRequest()
+    x.onreadystatechange=()=>{
+        if(x.readyState===4){
+            if(x.status===200){
+                try{
+                    const d=JSON.parse(x.responseText)
+                    out.innerHTML="ID: "+d.id+"<br>Name: "+d.name+"<br>Email: "+d.email+"<br>Department: "+d.department
+                }catch{
+                    out.innerText="Invalid JSON data"
+                }
+            }else{
+                out.innerText="Request failed"
+            }
+        }
+    }
+    x.open("GET","get_student.php",true)
+    x.send()
+}
+</script>
+
+</body>
+</html>

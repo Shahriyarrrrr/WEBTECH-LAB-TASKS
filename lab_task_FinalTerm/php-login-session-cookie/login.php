@@ -1,0 +1,25 @@
+<?php
+$username = $_COOKIE["username"] ?? "";
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+<form method="post" action="process_login.php">
+    <label>Username:</label><br>
+    <input type="text" name="username" value="<?php echo $username; ?>"><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password"><br><br>
+
+    <input type="checkbox" name="remember" value="1"> Remember Me<br><br>
+
+    <button type="submit">Login</button>
+</form>
+
+</body>
+</html>

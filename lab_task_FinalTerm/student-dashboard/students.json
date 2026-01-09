@@ -1,0 +1,59 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "semester": "Fall 2024",
+      "gpa": 3.5,
+      "courses": [
+        { "code": "CSC101", "name": "Programming", "grade": 85, "credits": 3 },
+        { "code": "MAT201", "name": "Calculus", "grade": 78, "credits": 4 }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Alice Smith",
+      "email": "alice@example.com",
+      "semester": "Fall 2024",
+      "gpa": 3.8,
+      "courses": [
+        { "code": "CSC102", "name": "Data Structures", "grade": 90, "credits": 3 },
+        { "code": "PHY101", "name": "Physics", "grade": 88, "credits": 3 }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bob Khan",
+      "email": "bob@example.com",
+      "semester": "Spring 2024",
+      "gpa": 3.2,
+      "courses": [
+        { "code": "ENG101", "name": "English", "grade": 75, "credits": 3 },
+        { "code": "MAT101", "name": "Algebra", "grade": 70, "credits": 3 }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Sara Ahmed",
+      "email": "sara@example.com",
+      "semester": "Spring 2024",
+      "gpa": 3.9,
+      "courses": [
+        { "code": "CSC201", "name": "Algorithms", "grade": 92, "credits": 3 },
+        { "code": "STA101", "name": "Statistics", "grade": 89, "credits": 3 }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Tom Lee",
+      "email": "tom@example.com",
+      "semester": "Fall 2024",
+      "gpa": 2.9,
+      "courses": [
+        { "code": "BUS101", "name": "Business", "grade": 65, "credits": 3 },
+        { "code": "ECO101", "name": "Economics", "grade": 68, "credits": 3 }
+      ]
+    }
+  ]
+}

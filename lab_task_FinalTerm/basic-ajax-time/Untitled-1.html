@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Example</title>
+</head>
+<body>
+
+<h2>AJAX Example</h2>
+
+<button id="btn">Get Server Time</button>
+
+<div id="result"></div>
+
+<script>
+const btn=document.getElementById("btn")
+const res=document.getElementById("result")
+
+btn.onclick=()=>{
+    const x=new XMLHttpRequest()
+    x.onreadystatechange=()=>{
+        if(x.readyState===4){
+            if(x.status===200){
+                res.innerText=x.responseText
+            }else{
+                res.innerText="Error fetching server time"
+            }
+        }
+    }
+    x.open("GET","server_time.php",true)
+    x.send()
+}
+</script>
+
+</body>
+</html>

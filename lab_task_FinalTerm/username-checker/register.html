@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+<style>
+body{font-family:Arial;background:#f2f2f2}
+.box{width:400px;margin:50px auto;background:#fff;padding:20px}
+input,button{width:100%;padding:8px;margin-top:10px}
+#status{margin-top:5px}
+.available{color:green}
+.taken{color:red}
+.loading{color:blue}
+</style>
+</head>
+<body>
+
+<div class="box">
+<form>
+<label>Username</label>
+<input type="text" id="username">
+<div id="count"></div>
+<div id="status"></div>
+
+<label>Email</label>
+<input type="email">
+
+<label>Password</label>
+<input type="password">
+
+<button id="submit" disabled>Register</button>
+</form>
+</div>
+
+<script>
+let t
+const u=document.getElementById("username")
+const s=document.getElementById("status")
+const c=document.getElementById("count")
+const b=document.getElementById("submit")
+
+u.oninput=()=>{
+clearTimeout(t)
+c.innerText="Characters: "+u.value.length+" (min 3)"
+if(u.value.length<3){
+s.innerText=""
+b.disabled=true
+return
+}
+s.className="loading"
+s.innerText="Checking..."
+b.disabled=true
+t=setTimeout(check,300)
+}
+
+function check(){
+const x=new XMLHttpRequest()
+x.onreadystatechange=()=>{
+if(x.readyState===4){
+if(x.status===200){
+const r=JSON.parse(x.responseText)
+s.innerText=r.message
+s.className=r.available?"available":"taken"
+b.disabled=!r.available
+}else{
+s.innerText="Error checking username"
+s.className="taken"
+}
+}
+}
+x.open("GET","check_username.php?username="+encodeURIComponent(u.value),true)
+x.send()
+}
+</script>
+
+</body>
+</html>

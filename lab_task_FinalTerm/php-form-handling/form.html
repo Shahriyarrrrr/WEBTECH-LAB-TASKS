@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Form</title>
+</head>
+<body>
+
+<form method="post" action="process.php">
+    <label>Name:</label><br>
+    <input type="text" name="name"><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email"><br><br>
+
+    <label>Age:</label><br>
+    <input type="number" name="age"><br><br>
+
+    <label>Gender:</label><br>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other<br><br>
+
+    <label>Skills:</label><br>
+    <input type="checkbox" name="skills[]" value="PHP"> PHP
+    <input type="checkbox" name="skills[]" value="JavaScript"> JavaScript
+    <input type="checkbox" name="skills[]" value="HTML"> HTML<br><br>
+
+    <label>Country:</label><br>
+    <select name="country">
+        <option value="">Select</option>
+        <option value="Bangladesh">Bangladesh</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+    </select><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
